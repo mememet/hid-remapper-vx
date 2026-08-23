@@ -91,26 +91,26 @@
     const layers = m.layers.map((on, i) => {
       if (i === fl) {
         return `<span class="chk layer locked ${on ? "on" : ""}" title="${m.sticky
-          ? "Forced off: a sticky layer key must not be active on the layer it toggles, or you could never toggle it back."
-          : "Forced on: a layer key must be active on the layer it activates, or you could never leave that layer."}">${i}</span>`;
+          ? "強制無効: 固定レイヤーキーは、切り替え対象のレイヤー上で有効になっていてはいけません。そうでないとレイヤーを元に戻すことができません。"
+          : "強制有効: レイヤーキーは、それが有効になるレイヤー上で有効になっている必要があります。そうでないと、そのレイヤーから移動することができません。"}">${i}</span>`;
       }
-      return `<span class="chk layer ${on ? "on" : ""}" data-layer="${i}" data-mid="${m.id}" title="Active on layer ${i}">${i}</span>`;
+      return `<span class="chk layer ${on ? "on" : ""}" data-layer="${i}" data-mid="${m.id}" title="レイヤー ${i}で有効">${i}</span>`;
     }).join("");
     const sth = [
-      ["sticky", "Sticky", "Sticky — output latches on; press again to release"],
-      ["tap", "Tap", "Tap — fires on a quick tap (shorter than the tap-hold threshold)"],
-      ["hold", "Hold", "Hold — fires only when the key is held down"],
+      ["sticky", "Sticky", "Sticky — 出力が固定されます。 もう一度押すと開放されます"],
+      ["tap", "Tap", "Tap — 素早く2回押すと出力されます (tap-holdの値よりも短く押すと出力されます)"],
+      ["hold", "Hold", "Hold — キーを押し続けている間だけ出力されます"],
     ].map(([k, lbl, title]) =>
       `<span class="chk mode word m-${k} ${m[k] ? "on" : ""}" data-flag="${k}" data-mid="${m.id}" title="${title}">${lbl}</span>`
     ).join("");
     return `
       <div class="flags-cell">
         <div class="flag-line">
-          <span class="flag-key">Layers</span>
+          <span class="flag-key">レイヤー</span>
           <div class="chk-row">${layers}</div>
         </div>
         <div class="flag-line">
-          <span class="flag-key">When</span>
+          <span class="flag-key">動作</span>
           <div class="chk-row seg modes">${sth}</div>
         </div>
       </div>`;
@@ -143,10 +143,10 @@
     // device — see translate.js isIncomplete. Say so on the row, before Save.
     const irOut = isIrOutput(m.output);
     const unfinished = m.output === "0x00000000" || (irOut && m.irCode == null);
-    const why = irOut ? "Pick an IR command" : "Pick an output";
+    const why = irOut ? "Pick an IR command" : "出力を選択してください";
     return `
       <div class="wg-branch is-solo ${off} ${unfinished ? "unfinished" : ""}" data-mid="${m.id}" draggable="true" ${style}>
-        <div class="wire-track branch-wire" title="This button's behavior">
+        <div class="wire-track branch-wire" title="この入力ボタンの操作">
           <span class="wire-line"></span>
         </div>
         <div class="map-arrow">${ICON.arrow}</div>
@@ -159,16 +159,16 @@
           </button>
         </div>
         <div class="row-ctrls compact">
-          <button class="icon-btn power ${m.enabled ? "" : "off"}" data-toggle="1" data-mid="${m.id}" title="${m.enabled ? "Disable this behavior" : "Enable this behavior"}">${ICON.power}</button>
-          <button class="icon-btn drag bdrag" title="Drag to reorder">${ICON.grip}</button>
-          <button class="icon-btn" data-move="up" data-mid="${m.id}" title="Move up">${ICON.up}</button>
-          <button class="icon-btn" data-move="down" data-mid="${m.id}" title="Move down">${ICON.down}</button>
-          <button class="icon-btn" data-clone="1" data-mid="${m.id}" title="Clone">${ICON.clone}</button>
-          <button class="icon-btn del" data-del="1" data-mid="${m.id}" title="Delete">${ICON.x}</button>
+          <button class="icon-btn power ${m.enabled ? "" : "off"}" data-toggle="1" data-mid="${m.id}" title="${m.enabled ? "この操作を無効化" : "この操作を有効化"}">${ICON.power}</button>
+          <button class="icon-btn drag bdrag" title="ドラッグで順序変更">${ICON.grip}</button>
+          <button class="icon-btn" data-move="up" data-mid="${m.id}" title="上に移動">${ICON.up}</button>
+          <button class="icon-btn" data-move="down" data-mid="${m.id}" title="下に移動">${ICON.down}</button>
+          <button class="icon-btn" data-clone="1" data-mid="${m.id}" title="この操作を複製">${ICON.clone}</button>
+          <button class="icon-btn del" data-del="1" data-mid="${m.id}" title="この操作を削除">${ICON.x}</button>
         </div>
         ${irOut ? `<div class="ir-bar">${irEditorHtml(m)}</div>` : ""}
         ${m.enabled ? "" : `<div class="disabled-badge">Disabled</div>`}
-        ${unfinished && m.enabled ? `<div class="unfinished-badge" title="This row is not sent to the device until it is complete">${why}</div>` : ""}
+        ${unfinished && m.enabled ? `<div class="unfinished-badge" title="この行は出力を選択するまでデバイスに送信されません">${why}</div>` : ""}
       </div>`;
   }
 
@@ -185,17 +185,17 @@
     return `
       <div class="wire-group ${forked}" data-groupkey="${group.key}" draggable="true">
         <div class="wg-trunk">
-          <button class="usage-btn trunk-btn ${empty ? "empty" : ""}" style="--cat:${usageAccent(code)}" data-pickgroup="${code}" data-mids="${mids}" title="${empty ? "Pick the input for this mapping" : "Change this input — applies to every behavior below"}">
-            <span class="grip-dots" title="Drag to reorder this button">${ICON.grip}</span>
+          <button class="usage-btn trunk-btn ${empty ? "empty" : ""}" style="--cat:${usageAccent(code)}" data-pickgroup="${code}" data-mids="${mids}" title="${empty ? "このマッピングの入力ボタンを選択" : "この入力ボタンを変更 — 以下のすべての操作に適用されます"}">
+            <span class="grip-dots" title="ドラッグでこの入力ボタンの順序を変更">${ICON.grip}</span>
             <span class="u-cat-dot"></span>
-            <span class="u-name">${empty ? "Pick an input…" : usageName(code)}</span>
+            <span class="u-name">${empty ? "入力を選択…" : usageName(code)}</span>
             <span class="chev">${ICON.chevron}</span>
           </button>
           ${meta}
         </div>
         <div class="wg-branches">
           <div class="wg-rows">${group.members.map(branchHtml).join("")}</div>
-          ${empty ? "" : `<button class="wg-add" data-addbranch="${code}" title="Add another behavior for this button">${ICON.plus}</button>`}
+          ${empty ? "" : `<button class="wg-add" data-addbranch="${code}" title="この入力ボタンに別の操作を追加する">${ICON.plus}</button>`}
         </div>
       </div>`;
   }
@@ -205,15 +205,15 @@
   function wireHeadHtml() {
     return `
       <div class="wire-head">
-        <div class="wh-trunk sortable" data-sort="input" title="Sort by input button">Input button${sortArrow("input")}</div>
+        <div class="wh-trunk sortable" data-sort="input" title="入力ボタンでソートする">入力ボタン${sortArrow("input")}</div>
         <div class="wh-cols">
-          <div>Behavior</div>
+          <div>操作</div>
           <div class="mh-arrow"></div>
-          <div class="sortable" data-sort="output" title="Sort by output">Output${sortArrow("output")}</div>
-          <div class="sortable" data-sort="layers" title="Sort by layer">Layers · Modes${sortArrow("layers")}</div>
+          <div class="sortable" data-sort="出力" title="出力でソートする">出力${sortArrow("output")}</div>
+          <div class="sortable" data-sort="レイヤー" title="レイヤーでソートする">レイヤー · モード${sortArrow("layers")}</div>
           <div style="text-align:center">Scale</div>
-          <div style="text-align:center">Color</div>
-          <div style="text-align:center">Edit</div>
+          <div style="text-align:center">色</div>
+          <div style="text-align:center">編集</div>
         </div>
       </div>`;
   }
@@ -222,8 +222,8 @@
   window.renderMappings = function (container) {
     const emptyState = `<div class="empty-state">
           <div class="es-glyph">${ICON.chip}</div>
-          <h4>No mappings yet</h4>
-          <div>Add a mapping, or jump to <b>Quick Start</b> for one-click presets.</div>
+          <h4>マッピングがありません</h4>
+          <div>マッピングを追加するか <b>Quick Start</b> へ行ってワンクリックでプリセットを追加</div>
         </div>`;
 
     // sort, if a column header was clicked (this REORDERS APP.mappings, exactly like v1 —
@@ -260,16 +260,16 @@
     <div class="panel">
       <div class="panel-head">
         <div>
-          <div class="panel-title">Mappings</div>
-          <div class="panel-sub">Each input button lives in one cell. The wire forks into a separate path for every behavior.</div>
+          <div class="panel-title">マッピング</div>
+          <div class="panel-sub">各入力はそれぞれ1つの枠に存在します。 線は操作ごとに分岐して別々の出力になります。</div>
         </div>
       </div>
       <div class="panel-body">
         ${bodyInner}
         <div class="toolbar-row">
-          <button class="btn-hx btn-primary" id="addMap">${ICON.plus}<span>Add mapping</span></button>
-          <button class="btn-hx ${APP.groupDisabled ? "btn-primary" : "btn-ghost"}" id="groupDisabledBtn">${ICON.power}<span>Disabled last</span></button>
-          <span class="hint" style="margin-left:auto">Same button = one cell · the wire forks for each behavior</span>
+          <button class="btn-hx btn-primary" id="addMap">${ICON.plus}<span>マッピングを追加</span></button>
+          <button class="btn-hx ${APP.groupDisabled ? "btn-primary" : "btn-ghost"}" id="groupDisabledBtn">${ICON.power}<span>最後に無効化</span></button>
+          <span class="hint" style="margin-left:auto">同じ入力ボタンは 1枠で各操作に対応する線の分岐になります</span>
         </div>
       </div>
     </div>`;
@@ -291,13 +291,13 @@
       if (APP.sortKey === k) APP.sortDir = -APP.sortDir;   // same column again -> reverse
       else { APP.sortKey = k; APP.sortDir = 1; }
       refresh();
-      toast("Sorted by " + k + (APP.sortDir === 1 ? " (A→Z)" : " (Z→A)"));
+      toast( k + (APP.sortDir === 1 ? " でソート (A→Z)" : " でソート (Z→A)"));
     }));
 
     $("#addMap", root).addEventListener("click", () => {
       APP.mappings.push(mk("0x00000000", "0x00000000"));
       refresh();
-      toast("Mapping added");
+      toast("マッピングを追加しました");
     });
 
 
@@ -330,7 +330,7 @@
     $$('[data-addbranch]', root).forEach((b) => b.addEventListener("click", () => {
       APP.mappings.push(mk(b.dataset.addbranch, "0x00000000"));
       refresh();
-      toast("New behavior added for this button");
+      toast("新しい操作をこの入力に追加しました");
     }));
 
     // usage picker triggers
@@ -379,7 +379,7 @@
       copy.id = window.HRX_STATE.uid();
       APP.mappings.splice(idx + 1, 0, copy);
       refresh();
-      toast("Mapping cloned");
+      toast("マッピングを複製しました");
     }));
 
     // delete
@@ -395,7 +395,7 @@
       const m = findMap(b.dataset.mid);
       m.enabled = !m.enabled;
       refresh();
-      toast(m.enabled ? "Mapping enabled" : "Mapping disabled");
+      toast(m.enabled ? "マッピングを有効化" : "マッピングを無効化");
     }));
 
     // layers
