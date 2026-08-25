@@ -268,7 +268,7 @@
         ${bodyInner}
         <div class="toolbar-row">
           <button class="btn-hx btn-primary" id="addMap">${ICON.plus}<span>マッピングを追加</span></button>
-          <button class="btn-hx ${APP.groupDisabled ? "btn-primary" : "btn-ghost"}" id="groupDisabledBtn">${ICON.power}<span>最後に無効化</span></button>
+          <button class="btn-hx ${APP.groupDisabled ? "btn-primary" : "btn-ghost"}" id="groupDisabledBtn">${ICON.power}<span>最後に無効</span></button>
           <span class="hint" style="margin-left:auto">同じ入力ボタンは 1枠で各操作に対応する線の分岐になります</span>
         </div>
       </div>
