@@ -80,10 +80,10 @@
       if (m && m.length && APP.macros[n] && APP.macros[n].length === 0) { APP.macros[n] = m; macros++; }
     });
 
-    const bits = [added + " mapping" + (added === 1 ? "" : "s")];
+    const bits = [added + " マッピング" + (added === 1 ? "" : "")];
     if (exprs) bits.push(exprs + " expression" + (exprs === 1 ? "" : "s"));
-    if (macros) bits.push(macros + " macro" + (macros === 1 ? "" : "s"));
-    toast("Added: " + bits.join(", "));
+    if (macros) bits.push(macros + " マクロ" + (macros === 1 ? "" : ""));
+    toast("追加: " + bits.join(", "));
     window.HRX.setTab("mappings");
   }
 
@@ -126,8 +126,8 @@
             <div class="ex-title">${e.description}</div>
             <div class="ex-meta">${bits.join(" · ") || "config"}</div>
           </div>
-          <button class="btn-hx btn-primary btn-sm" data-exadd="${i}" title="Append this example's mappings to your config">${ICON.plus}<span>Add</span></button>
-          <button class="btn-hx btn-sm" data-exload="${i}" title="Replace your entire config with this example">${ICON.download}<span>Replace</span></button>
+          <button class="btn-hx btn-primary btn-sm" data-exadd="${i}" title="Append this example's mappings to your config">${ICON.plus}<span>追加</span></button>
+          <button class="btn-hx btn-sm" data-exload="${i}" title="Replace your entire config with this example">${ICON.download}<span>置き換え</span></button>
         </div>`;
     }).join("");
 
@@ -135,27 +135,27 @@
     <div class="panel"><div class="panel-body">
       <div class="qa-section">
         <div class="qa-section-head">
-          <h3>Preset fixes</h3>
-          <p>One click appends a real, working mapping. Nothing reaches the device until you press
-             <b>Save to device</b>.</p>
+          <h3>プリセットの修正</h3>
+          <p>１クリックで実際に動作するマッピングが追加されます。
+             <b>デバイスへ保存</b> を押すまでデバイスには何も送信されません。</p>
         </div>
         <div class="preset-grid">${presetCards}</div>
       </div>
 
       <div class="qa-section" style="margin-bottom:0">
         <div class="qa-section-head">
-          <h3>Examples <span class="section-tag" style="margin-left:6px">${all.length}</span></h3>
-          <p>The ready-made configs from the original tool. <b>Add</b> appends an example's mappings
-             to what you already have (its expressions and macros only fill empty slots).
-             <b>Replace</b> swaps your whole config for it.</p>
+          <h3>例 <span class="section-tag" style="margin-left:6px">${all.length}</span></h3>
+          <p>元のツールからの既製の構成です。 <b>追加</b> は例のマッピングを既存のものに追加します
+             （expressions と マクロ は空のスロットを埋めるだけです）。
+             <b>置き換え</b> は構成全体を置き換えます。<br>（現在、例の検索では日本語による入力がうまくできません。日本語はコピーした文字をボックスに貼り付けてください）</p>
         </div>
         <div class="search-wrap" style="max-width:420px;margin-bottom:12px">
           ${ICON.search}
-          <input class="input-hx" id="exSearch" placeholder="Search examples — scroll, dpi, macro, gamepad…"
+          <input class="input-hx" id="exSearch" placeholder="例を検索 — scroll, dpi, macro, gamepad…"
                  value="${exQuery}" autocomplete="off">
         </div>
         <div class="example-list">
-          ${exRows || `<div class="macro-empty">No example matches “${exQuery}”.</div>`}
+          ${exRows || `<div class="macro-empty">“${exQuery}” に一致する例はありませんでした。</div>`}
         </div>
       </div>
     </div></div>`;
