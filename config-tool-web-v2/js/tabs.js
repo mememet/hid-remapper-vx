@@ -89,7 +89,7 @@
         ${card("gpioDebounce", "GPIO デバウンス時間",
           "GPIO ピンに直接配線されたボタンのデバウンスwindow。",
           num("gpioDebounce", s.gpioDebounce == null ? DEF.gpioDebounce : s.gpioDebounce, 0, 255,
-              `milliseconds (default ${DEF.gpioDebounce})`))}
+              `ミリ秒 (デフォルト ${DEF.gpioDebounce})`))}
 
         ${card("macroEntryDuration", "マクロの入力間隔",
           "マクロの各ステップをどのくらいの時間押し続けるか。",
