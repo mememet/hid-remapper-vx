@@ -1,6 +1,6 @@
 const examples = [
     {
-        'description': 'map caps lock to control',
+        'description': 'caps lock を control にマッピングする',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -18,7 +18,7 @@ const examples = [
         }
     },
     {
-        'description': 'swap left/right mouse buttons',
+        'description': 'マウスの左／右ボタンを入れ替える',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -43,7 +43,7 @@ const examples = [
         }
     },
     {
-        'description': 'middle button is ctrl-c, right button is ctrl-v',
+        'description': '中ボタンを ctrl-c, 右ボタンを ctrl-v にする',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -82,7 +82,7 @@ const examples = [
         }
     },
     {
-        'description': 'invert scroll wheel direction',
+        'description': 'スクロールホイールの回転方向を反転する',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -100,7 +100,7 @@ const examples = [
         }
     },
     {
-        'description': 'Voice Command toggles mouse-scroll mode',
+        'description': '音声コマンドでマウススクロールモードを切り替える',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -152,7 +152,7 @@ const examples = [
         }
     },
     {
-        'description': 'Voice Command toggles mouse-scroll mode (keep cursor)',
+        'description': '音声コマンドでマウススクロールモードを切り替える (カーソルを保持)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -222,7 +222,7 @@ const examples = [
         }
     },
     {
-        'description': 'moving the mouse scrolls when middle button held',
+        'description': 'マウスの中ボタンを押しながらスクロールする',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -254,7 +254,7 @@ const examples = [
         }
     },
     {
-        'description': 'mouse precision mode when middle button held',
+        'description': 'マウスの中ボタンを押したままにすると精密モード',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -286,7 +286,7 @@ const examples = [
         }
     },
     {
-        'description': 'rotate mouse by 90 degrees',
+        'description': 'マウスを90度回転させる',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -311,7 +311,7 @@ const examples = [
         }
     },
     {
-        'description': 'rotate mouse by 30 degrees',
+        'description': 'マウスを30度回転させる',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -350,7 +350,7 @@ const examples = [
         }
     },
     {
-        'description': 'arrows act as mouse when caps lock held',
+        'description': 'Caps Lockキーを押しながら矢印キーを押すと、マウスとして動作します',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -403,7 +403,7 @@ const examples = [
         }
     },
     {
-        'description': 'right button is left button with drag-lock',
+        'description': '右ボタンはドラッグロック付きの左ボタンになります',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -421,7 +421,7 @@ const examples = [
         }
     },
     {
-        'description': 'one button drag-lock (simple): long press to engage, long press to disengage',
+        'description': '1ボタンドラッグロック（シンプル）: 長押しでロック、長押しでロック解除',
         'config': {
             "version": 12,
             "unmapped_passthrough_layers": [
@@ -518,7 +518,7 @@ const examples = [
         }
     },
     {
-        'description': 'one button drag-lock (advanced): long press to engage, any click to disengage',
+        'description': '１ボタンドラッグロック（高度）: 長押しでロック、任意のクリックで解除',
         'config': {
             "version": 12,
             "unmapped_passthrough_layers": [
@@ -628,7 +628,7 @@ const examples = [
         }
     },
     {
-        'description': 'disable windows keys',
+        'description': 'Windowsキーを無効にする',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -653,7 +653,7 @@ const examples = [
         }
     },
     {
-        'description': 'wheel switches tabs',
+        'description': 'ホイールでタブを切り替える',
         'config': {
             "version": 3,
             "unmapped_passthrough": true,
@@ -699,7 +699,7 @@ const examples = [
         }
     },
     {
-        'description': 'middle button cycles DPI',
+        'description': '中ボタンで DPI を切り替える',
         'config': {
             "version": 4,
             "unmapped_passthrough_layers": [
@@ -779,7 +779,7 @@ const examples = [
         }
     },
     {
-        'description': 'scroll wheel smoothly adjusts DPI',
+        'description': 'スクロールホイールで DPI をスムーズに調整します',
         'config': {
             "version": 13,
             "unmapped_passthrough_layers": [
@@ -889,7 +889,7 @@ const examples = [
         }
     },
     {
-        'description': 'macros: double-click and "Hello, world!"',
+        'description': 'マクロ: ダブルクリックで "Hello, world!"',
         'config': {
             "version": 5,
             "unmapped_passthrough_layers": [
@@ -989,7 +989,7 @@ const examples = [
         }
     },
     {
-        'description': 'tap-hold: middle button is middle-click when clicked, but switches layer when held',
+        'description': 'tap-hold: 中ボタンはクリック時は中ボタンクリックですが、長押しするとレイヤーを切り替えます',
         'config': {
             "version": 5,
             "unmapped_passthrough_layers": [
@@ -1061,7 +1061,7 @@ const examples = [
         }
     },
     {
-        'description': 'tap-hold: middle button activates layer permanently when tapped, temporarily when held',
+        'description': 'tap-hold: 中ボタンはクリックするとレイヤーを永続的に切り替え、長押しすると一時的に有効にします',
         'config': {
             "version": 5,
             "unmapped_passthrough_layers": [
@@ -1133,7 +1133,7 @@ const examples = [
         }
     },
     {
-        'description': 'expressions: gamepad-to-mouse adapter',
+        'description': 'expressions: ゲームパッドをマウスにします',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [],
@@ -1253,7 +1253,7 @@ const examples = [
         }
     },
     {
-        'description': 'expressions: middle button enables mouse jiggler',
+        'description': 'expressions: 中ボタンでマウスジグラーを有効にします',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [
@@ -1323,7 +1323,7 @@ const examples = [
         }
     },
     {
-        'description': 'swap caps lock and scroll lock LEDs',
+        'description': 'Caps Lock と Scroll Lock のLEDを入れ替えます',
         'config': {
             "version": 7,
             "unmapped_passthrough_layers": [
@@ -1407,7 +1407,7 @@ const examples = [
         }
     },
     {
-        'description': 'caps lock LED blinks when on',
+        'description': 'Caps Lockが有効なときに LED が点滅します',
         'config': {
             "version": 7,
             "unmapped_passthrough_layers": [
@@ -1480,7 +1480,7 @@ const examples = [
         }
     },
     {
-        'description': 'caps lock LED on when layer 1 active',
+        'description': 'レイヤー１が有効なときにCaps Lock LED が点灯します',
         'config': {
             "version": 7,
             "unmapped_passthrough_layers": [
@@ -1565,7 +1565,7 @@ const examples = [
         }
     },
     {
-        'description': 'expressions: auto-click left mouse button when cursor stops moving',
+        'description': 'expressions: カーソルが停止したときに自動的に左マウスボタンをクリックする',
         'config': {
             "version": 8,
             "unmapped_passthrough_layers": [
@@ -1638,7 +1638,7 @@ const examples = [
         }
     },
     {
-        'description': 'advanced autoclicker: use screen corners for right click, double click, click-drag',
+        'description': '高度な自動クリック: 画面の隅を使用して右クリック、ダブルクリック、クリック＋ドラッグを実行',
         'config': {
             "version": 9,
             "unmapped_passthrough_layers": [
@@ -1768,7 +1768,7 @@ const examples = [
         }
     },
     {
-        'description': 'absolute mouse: basic functionality',
+        'description': '絶対値マウス: 基本機能',
         'config': {
             "version": 9,
             "unmapped_passthrough_layers": [
@@ -1854,7 +1854,7 @@ const examples = [
         }
     },
     {
-        'description': 'keyboard adapter for Switch with 15 degree nudges and tilt',
+        'description': '15度の角度調整とチルト機能を備えた Switch 用キーボードアダプター',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [],
@@ -2268,7 +2268,7 @@ const examples = [
         }
     },
     {
-        'description': 'Stadia controller adapter for PS4',
+        'description': 'PS4用 Stadia コントローラーアダプター',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [],
@@ -2677,7 +2677,7 @@ const examples = [
         }
     },
     {
-        'description': 'keyboard adapter for PS4: arrows=D-pad, WASD=left stick, numpad=right stick',
+        'description': 'PS4用キーボードアダプター: 矢印キー＝方向ボタン、WASDキー＝左スティック、テンキー＝右スティック',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [
@@ -3057,7 +3057,7 @@ const examples = [
         }
     },
     {
-        'description': 'mouse to analog stick',
+        'description': 'マウスをアナログスティックへ',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [],
@@ -3227,7 +3227,7 @@ const examples = [
         }
     },
     {
-        'description': 'Xbox controller (Bluetooth) adapter for Switch',
+        'description': 'Switch用Xboxコントローラー (Bluetooth) アダプター',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [],
@@ -3574,7 +3574,7 @@ const examples = [
         }
     },
     {
-        'description': 'Xbox controller (USB) adapter for Switch',
+        'description': 'Switch用Xboxコントローラー (USB) アダプター',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [],
@@ -3921,7 +3921,7 @@ const examples = [
         }
     },
     {
-        'description': 'mirrorboard: a one-handed keyboard layout',
+        'description': 'mirrorboard: 片手用キーボードレイアウト',
         'config': {
             "version": 12,
             "unmapped_passthrough_layers": [
@@ -4522,7 +4522,7 @@ const examples = [
         }
     },
     {
-        'description': 'custom usages for DualSense: touchpad works as mouse',
+        'description': 'DualSenseのカスタムな使用方法: タッチパッドがマウスとして機能します',
         'config': {
             "version": 12,
             "unmapped_passthrough_layers": [],
@@ -4800,7 +4800,7 @@ const examples = [
         }
     },
     {
-        'description': 'DualSense gyro mouse',
+        'description': 'DualSense ジャイロマウス',
         'config': {
             "version": 13,
             "unmapped_passthrough_layers": [],
@@ -5178,7 +5178,7 @@ const examples = [
         }
     },
     {
-        'description': '5-key chording keyboard (A-S-D-F-space)',
+        'description': '５キー コードキーボード (A-S-D-F-スペース)',
         'config': {
             "version": 13,
             "unmapped_passthrough_layers": [
@@ -5664,7 +5664,7 @@ const examples = [
         }
     },
     {
-        'description': 'Two mice, two cursors',
+        'description': '２つのマウス、２つのカーソル',
         'config': {
             "version": 13,
             "unmapped_passthrough_layers": [
@@ -5796,7 +5796,7 @@ const examples = [
         }
     },
     {
-        'description': '"warpd": keyboard-driven, grid-based mouse positioning',
+        'description': '"warpd": キーボード操作によるグリッドベースのマウスの位置決め',
         'config': {
             "version": 13,
             "unmapped_passthrough_layers": [
@@ -5972,7 +5972,7 @@ const examples = [
         }
     },
     {
-        'description': 'DualSense to XAC adapter',
+        'description': 'DualSense から XAC へのアダプター',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [
@@ -6477,7 +6477,7 @@ const examples = [
         }
     },
     {
-        'description': 'Stadia controller to XAC adapter',
+        'description': 'Stadia コントローラーから XAC へのアダプター',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [
@@ -6805,7 +6805,7 @@ const examples = [
         }
     },
     {
-        'description': 'keyboard to XAC adapter: arrows=D-pad, WASD=left stick, numpad=right stick',
+        'description': 'キーボードから XAC へのアダプター: 矢印キー＝D-pad、WASDキー＝左スティック、テンキー＝右スティック',
         'config': {
             "version": 16,
             "unmapped_passthrough_layers": [],
@@ -7128,7 +7128,7 @@ const examples = [
         }
     },
     {
-        'description': 'scroll wheel text input, left button accepts letter',
+        'description': 'スクロールホイールでテキスト入力、左ボタンで文字を入力可能',
         'config': {
             "version": 14,
             "unmapped_passthrough_layers": [],
@@ -8046,7 +8046,7 @@ const examples = [
         }
     },
     {
-        'description': 'right button is left button with turbo',
+        'description': '右ボタンはターボ付きの左ボタンになります',
         'config': {
             "version": 14,
             "unmapped_passthrough_layers": [
@@ -9035,7 +9035,7 @@ const examples = [
         }
     },
     {
-        'description': 'touchpad as analog sticks on a PS4 fightstick',
+        'description': 'PS4のアーケードスティックのアナログスティックとして、タッチパッドを使用する',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [
@@ -9270,7 +9270,7 @@ const examples = [
         }
     },
     {
-        'description': 'analog stick cardinal directions to D-pad',
+        'description': 'アナログスティックの方向機能を D-pad に変換する',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [
@@ -9390,7 +9390,7 @@ const examples = [
         }
     },
     {
-        'description': 'analog stick cardinal directions to buttons',
+        'description': 'アナログスティックの方向機能をボタンに変換する',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [
@@ -9510,7 +9510,7 @@ const examples = [
         }
     },
     {
-        'description': 'analog stick to L2/R2',
+        'description': 'アナログスティックを L2/R2 に割り当てる',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [
@@ -10066,7 +10066,7 @@ const examples = [
         }
     },
     {
-        'description': 'D-pad (hat switch) as analog stick',
+        'description': 'D-pad (ハットスイッチ) をアナログスティックにする',
         'config': {
             "version": 17,
             "unmapped_passthrough_layers": [
@@ -10190,7 +10190,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Alt+Tab (next app)',
+        'description': 'Windows: Alt+Tab (次のアプリへ)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10223,7 +10223,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Alt+Shift+Tab (previous app)',
+        'description': 'Windows: Alt+Shift+Tab (前のアプリへ)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10256,7 +10256,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Win+Tab (Task View)',
+        'description': 'Windows: Win+Tab (タスクビュー)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10289,7 +10289,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Alt+F4 (close window)',
+        'description': 'Windows: Alt+F4 (ウィンドウを閉じる)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10322,7 +10322,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Win+D (show desktop)',
+        'description': 'Windows: Win+D (デスクトップを表示)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10355,7 +10355,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Ctrl+Shift+Esc (Task Manager)',
+        'description': 'Windows: Ctrl+Shift+Esc (タスクマネージャー)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10388,7 +10388,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Win+L (lock PC)',
+        'description': 'Windows: Win+L (PCをロック)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
@@ -10421,7 +10421,7 @@ const examples = [
         }
     },
     {
-        'description': 'Windows: Win+Shift+S (screenshot)',
+        'description': 'Windows: Win+Shift+S (スクリーンショット)',
         'config': {
             "version": 6,
             "unmapped_passthrough_layers": [0],
