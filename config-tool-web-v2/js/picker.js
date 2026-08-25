@@ -37,8 +37,8 @@
   };
 
   function pickerHtml() {
-    const title = state.mode === "input" ? "Select input" : "Select output";
-    const kicker = state.mode === "input" ? "Source usage" : "Target usage";
+    const title = state.mode === "input" ? "入力を選択" : "出力を選択";
+    const kicker = state.mode === "input" ? "ソースの使用" : "ターゲットの使用";
     const nav = categories().map((c) => {
       const dot = c.led
         ? `<span class="nav-dot" style="background:conic-gradient(#ff3b30,#ffe11a,#22c55e,#22d3ee,#3b82f6,#a855f7,#ff5fa2,#ff3b30)"></span>`
@@ -54,22 +54,22 @@
             <div class="picker-kicker">${kicker}</div>
             <div class="picker-title">${title}</div>
           </div>
-          <button class="btn-hx btn-ghost btn-sm picker-close" id="pickerClose">${ICON.x}<span>Close</span></button>
+          <button class="btn-hx btn-ghost btn-sm picker-close" id="pickerClose">${ICON.x}<span>閉じる</span></button>
         </div>
         <div class="picker-controls">
           ${portHtml()}
           <div class="field" style="flex:1">
-            <label>Search</label>
+            <label>検索</label>
             <div class="search-wrap">
               ${ICON.search}
-              <input class="input-hx" id="pickerSearch" placeholder="Search keys, buttons, codes…" autocomplete="off">
+              <input class="input-hx" id="pickerSearch" placeholder="キー、ボタン、コードで検索…" autocomplete="off">
             </div>
           </div>
           <div class="field">
-            <label>Custom hex</label>
+            <label>カスタム hex</label>
             <div style="display:flex;gap:6px">
               <input class="input-hx" id="pickerCustom" placeholder="0x000c00e9" style="width:130px;font-family:var(--font-mono)">
-              <button class="btn-hx btn-sm" id="pickerCustomApply">${ICON.check}<span>Use</span></button>
+              <button class="btn-hx btn-sm" id="pickerCustomApply">${ICON.check}<span>使用</span></button>
             </div>
           </div>
         </div>
@@ -87,10 +87,10 @@
   function portHtml() {
     if (!state.onPort) return "";
     const cur = state.port || 0;
-    const label = state.mode === "input" ? "Source port" : "Target port";
+    const label = state.mode === "input" ? "ソースポート" : "ターゲットポート";
     // the port is a nibble on the wire (0-15), and v1 offers the full range — match it
     const opts = Array.from({ length: 16 }, (_, v) =>
-      `<option value="${v}" ${v === cur ? "selected" : ""}>${v === 0 ? "0 — Any" : v}</option>`).join("");
+      `<option value="${v}" ${v === cur ? "selected" : ""}>${v === 0 ? "0 — 全て" : v}</option>`).join("");
     return `
       <div class="field">
         <label>${label}</label>
@@ -109,7 +109,7 @@
     if (!list.length) return null;
     return {
       id: "device",
-      label: state.mode === "input" ? "Reported by your device" : "Supported by your device",
+      label: state.mode === "input" ? "あなたのデバイスから" : "あなたのデバイスでサポート",
       accent: "#22c55e",
       usages: list.map((code) => [code, window.HRX_USAGES.usageName(code)]),
     };
@@ -237,7 +237,7 @@
           ${inner}
         </div>`;
     });
-    if (!any) blocks = `<div class="no-results">No usages match “${query}”. Try the Custom field for a raw hex code.</div>`;
+    if (!any) blocks = `<div class="no-results">一致する“${query}”がありません。 16進数のカスタムフィールドを試してみてください。</div>`;
     return blocks;
   }
 
@@ -260,7 +260,7 @@
       const raw = custom.value.trim().replace(/^0x/i, "");
       if (!/^[0-9a-f]{1,8}$/i.test(raw)) {
         custom.classList.add("bad");
-        if (window.HRX && window.HRX.toast) window.HRX.toast("Enter a hex usage code, e.g. 0x000c00e9");
+        if (window.HRX && window.HRX.toast) window.HRX.toast("使用できる16進数を入力してください。 例 0x000c00e9");
         return;
       }
       const code = "0x" + raw.toLowerCase().padStart(8, "0");
