@@ -99,7 +99,7 @@
     const sth = [
       ["sticky", "Sticky", "Sticky — 出力が固定されます。 もう一度押すと開放されます"],
       ["tap", "Tap", "Tap — 素早く2回押すと出力されます (tap-holdの値よりも短く押すと出力されます)"],
-      ["hold", "Hold", "Hold — キーを押し続けている間だけ出力されます"],
+      ["hold", "Hold", "Hold — キーを押し続けている間だけ出力されます (tap-holdの値よりも長く押すと出力されます)"],
     ].map(([k, lbl, title]) =>
       `<span class="chk mode word m-${k} ${m[k] ? "on" : ""}" data-flag="${k}" data-mid="${m.id}" title="${title}">${lbl}</span>`
     ).join("");
