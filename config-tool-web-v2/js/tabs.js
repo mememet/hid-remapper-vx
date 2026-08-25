@@ -32,7 +32,7 @@
   };
 
   const resetBtn = (key) =>
-    `<button class="btn-reset" data-reset="${key}" title="Reset to default">${ICON.undo}</button>`;
+    `<button class="btn-reset" data-reset="${key}" title="デフォルト値にリセット">${ICON.undo}</button>`;
 
   const card = (key, label, help, body, cls) => `
     <div class="setting-card ${cls || ""}">
@@ -57,46 +57,46 @@
   window.renderSettings = function (container) {
     const s = APP.settings;
     const emuOpts = EMU.map((e, i) => `<option value="${i}" ${i === s.emulatedDevice ? "selected" : ""}>${e}</option>`).join("");
-    const passToggles = s.passthrough.map((on, i) => toggleRow(`data-pass="${i}"`, on, "Layer " + i)).join("");
+    const passToggles = s.passthrough.map((on, i) => toggleRow(`data-pass="${i}"`, on, "レイヤー " + i)).join("");
 
     container.innerHTML = `
     <div class="panel">
       <div class="panel-head">
-        <div><div class="panel-title">Settings</div><div class="panel-sub">Device-wide behavior. Every value can be reset to the firmware default.</div></div>
-        <button class="btn-hx btn-sm" id="resetAll" style="margin-left:auto">${ICON.undo}<span>Reset all</span></button>
-        <button class="btn-hx btn-sm" id="editJson">${ICON.file}<span>Edit config JSON</span></button>
+        <div><div class="panel-title">設定</div><div class="panel-sub">デバイス全体の設定。 すべての値をファームウェアのデフォルト値にリセットできます。</div></div>
+        <button class="btn-hx btn-sm" id="resetAll" style="margin-left:auto">${ICON.undo}<span>すべてをリセット</span></button>
+        <button class="btn-hx btn-sm" id="editJson">${ICON.file}<span>JSON構成を編集</span></button>
       </div>
       <div class="panel-body">
       <div class="settings-grid">
 
-        ${card("emulatedDevice", "Emulated device type",
-          "What the remapper presents itself as to the host.",
+        ${card("emulatedDevice", "エミュレートするデバイスの種類",
+          "Remapperがホストに対してどのように認識するか。",
           `<select class="select-hx" style="width:100%" id="emu">${emuOpts}</select>`)}
 
 
-        ${card("tapHold", "Tap-hold threshold",
-          "Global timing that separates a tap from a hold.",
-          num("tapHold", s.tapHold, 0, null, `milliseconds (default ${DEF.tapHold})`))}
+        ${card("tapHold", "Tap-hold 閾値",
+          "タップとホールドを区別する全体的なタイミング。",
+          num("tapHold", s.tapHold, 0, null, `ミリ秒 (デフォルト ${DEF.tapHold})`))}
 
-        ${card("scrollTimeout", "Partial scroll timeout",
-          "How long partial scroll accumulation persists.",
-          num("scrollTimeout", s.scrollTimeout, 0, null, `milliseconds (default ${DEF.scrollTimeout})`))}
+        ${card("scrollTimeout", "部分スクロールのタイムアウト",
+          "部分スクロールの累積がどのくらいの時間続くか。",
+          num("scrollTimeout", s.scrollTimeout, 0, null, `ミリ秒 (デフォルト ${DEF.scrollTimeout})`))}
 
-        ${card("interval", "Interval override",
-          "USB polling interval. 0 keeps the device default.",
-          num("interval", s.interval, 0, 255, `0 = default`))}
+        ${card("interval", "ポーリング間隔の上書き",
+          "USB ポーリング間隔。 0 でデバイスのデフォルトを使用。",
+          num("interval", s.interval, 0, 255, `0 = デフォルト`))}
 
-        ${card("gpioDebounce", "GPIO debounce time",
-          "Debounce window for buttons wired directly to GPIO pins.",
+        ${card("gpioDebounce", "GPIO デバウンス時間",
+          "GPIO ピンに直接配線されたボタンのデバウンスwindow。",
           num("gpioDebounce", s.gpioDebounce == null ? DEF.gpioDebounce : s.gpioDebounce, 0, 255,
               `milliseconds (default ${DEF.gpioDebounce})`))}
 
-        ${card("macroEntryDuration", "Macro entry duration",
-          "How long each step of a macro is held down.",
+        ${card("macroEntryDuration", "マクロの入力間隔",
+          "マクロの各ステップをどのくらいの時間押し続けるか。",
           num("macroEntryDuration", s.macroEntryDuration == null ? DEF.macroEntryDuration : s.macroEntryDuration, 1, 255,
-              `milliseconds (default ${DEF.macroEntryDuration})`))}
+              `ミリ秒 (デフォルト ${DEF.macroEntryDuration})`))}
 
-        ${card("irOutputPin", "IR output pin",
+        ${card("irOutputPin", "IR 出力ピン",
           "GPIO the IR LED is wired to (only used on IR-capable firmware; saved with the config only when you have IR mappings). Avoid pins already used by USB/UART/RGB LED/Bluetooth.",
           num("irOutputPin", s.irOutputPin == null ? DEF.irOutputPin : s.irOutputPin, 0, 29,
               `GPIO 0–29 (default ${DEF.irOutputPin})`))}
@@ -106,19 +106,19 @@
           num("irRepeatMs", s.irRepeatMs == null ? DEF.irRepeatMs : s.irRepeatMs, 0, 2000,
               `milliseconds, 0 = off (default ${DEF.irRepeatMs})`))}
 
-        ${card("passthrough", "Unmapped passthrough",
-          "Pass keys with no mapping straight through, per layer. All layers are on by default — switching a layer off silences every unmapped key on it.",
+        ${card("passthrough", "未マッピングのパススルー",
+          "マッピングされていないキーはレイヤーごとにそのまま通過します。 デフォルトではすべてのレイヤーがオンになっています。 — レイヤーをオフにすると、そのレイヤー上のマッピングされていないキーはすべて無出力になります。",
           passToggles)}
 
-        ${card("inputLabels", "Input labels",
+        ${card("inputLabels", "入力ラベル",
           "Which naming scheme the picker uses for the shared button/axis codes. A gamepad and a mouse use the same HID codes, so the same number can be “Left button” or “Button 1”.",
           `<select class="select-hx" style="width:100%" id="inputLabels">
              <option value="0" ${(s.inputLabels || 0) === 0 ? "selected" : ""}>Mouse</option>
              <option value="1" ${(s.inputLabels || 0) === 1 ? "selected" : ""}>Gamepad</option>
            </select>`)}
 
-        ${card("flags", "Device flags",
-          "Lower-level switches. Leave these alone unless you know you need them.",
+        ${card("flags", "デバイスフラグ",
+          "低レベルyのスイッチ。 必要な場合を除き、これらは触らないでください。",
           `${toggleRow('data-flag-set="normalizeGamepad"', s.normalizeGamepad !== false, "Normalize gamepad inputs")}
            ${toggleRow('data-flag-set="gpioOutputMode"', !!s.gpioOutputMode, "GPIO output: open-drain (off = push-pull)")}
            ${toggleRow('data-flag-set="ignoreAuthDevInputs"', !!s.ignoreAuthDevInputs, "Ignore auth device inputs")}`)}
@@ -135,7 +135,7 @@
     $("#emu", container).addEventListener("change", (e) => {
       s.emulatedDevice = +e.target.value;
       APP.device.profile = EMU[s.emulatedDevice] || ("Profile " + s.emulatedDevice);
-      toast("Emulated device: " + EMU[s.emulatedDevice]);
+      toast("エミュレートデバイス: " + EMU[s.emulatedDevice]);
     });
 
     const numField = (id, key, min, max) => {
@@ -174,14 +174,14 @@
       if (!fn) return;
       fn(s);
       rerender();
-      toast("Reset to default");
+      toast("デフォルトにリセットしました");
     }));
 
     const ra = $("#resetAll", container);
     if (ra) ra.addEventListener("click", () => {
       Object.values(RESETTERS).forEach((fn) => fn(s));
       rerender();
-      toast("All settings reset to firmware defaults");
+      toast("すべての設定をファームウェアのデフォルトにリセットしました");
     });
 
     const ej = $("#editJson", container);
@@ -234,9 +234,9 @@
       <div class="panel"><div class="panel-body">
         <div class="state-hero">
           <div class="sh-glyph">${ICON.activity}</div>
-          <h4>No device to monitor</h4>
-          <p>Live HID activity appears here once a remapper is connected. Plug in your device and open it — then press buttons on your remote to see them stream in.</p>
-          <button class="btn-hx btn-primary" id="monConnect">${ICON.plug}<span>Open device</span></button>
+          <h4>モニターするデバイスがありません</h4>
+          <p>Remapperが接続されると、ここにリアルタイムの HID アクティビティが表示されます。 デバイスを接続してここを開き、接続した機器のボタンを押すと、アクティビティが表示されます。</p>
+          <button class="btn-hx btn-primary" id="monConnect">${ICON.plug}<span>デバイスを開く</span></button>
         </div>
       </div></div>`;
       const mc = $("#monConnect", container);
@@ -250,14 +250,14 @@
     container.innerHTML = `
     <div class="panel">
       <div class="panel-head">
-        <div><div class="panel-title">Monitor</div><div class="panel-sub">Live HID activity from the connected device. Press a button (or move the mouse) to see it here, then hit + to map it.</div></div>
-        <button class="btn-hx btn-ghost btn-sm" id="monClear" style="margin-left:auto">Clear</button>
+        <div><div class="panel-title">モニター</div><div class="panel-sub">接続されたデバイスからのリアルタイムのHIDアクティビティ。 ボタンを押す（またはマウスを動かす）とここに表示され、その後 「＋」 を押してマッピングできます。</div></div>
+        <button class="btn-hx btn-ghost btn-sm" id="monClear" style="margin-left:auto">クリア</button>
       </div>
       <div class="panel-body">
         <div style="overflow-x:auto">
         <table style="width:100%;border-collapse:collapse;font-size:13px">
           <thead><tr>
-            ${["Usage code", "Usage name", "Port", "Last value", "Min", "Max", ""].map((th) => `<th style="text-align:left;padding:9px 12px;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--label);border-bottom:1px solid var(--border)">${th}</th>`).join("")}
+            ${["使用コード", "使用名", "ポート", "最後の値", "最小", "最大", ""].map((th) => `<th style="text-align:left;padding:9px 12px;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--label);border-bottom:1px solid var(--border)">${th}</th>`).join("")}
           </tr></thead>
           <tbody id="monBody"></tbody>
         </table>
@@ -266,7 +266,7 @@
     </div>`;
     monEls.clear(); // the container was just rebuilt — the cached <tr>s are no longer in the DOM
     paintMon();
-    $("#monClear", container).addEventListener("click", () => { monData.clear(); monEls.clear(); paintMon(); toast("Monitor cleared"); });
+    $("#monClear", container).addEventListener("click", () => { monData.clear(); monEls.clear(); paintMon(); toast("モニターをクリアしました"); });
   };
 
   /* THE + BUTTON MUST SURVIVE A LIVE REDRAW.
@@ -289,7 +289,7 @@
       toast(`${r.name} is already mapped — opening it`);
     } else {
       APP.mappings.push(window.HRX_STATE.mk(r.usage, "0x00000000"));
-      toast(`Mapping added for ${r.name} — now pick its output`);
+      toast(`${r.name} をマッピングに追加しました — その出力を選択してください`);
     }
     window.HRX.setTab("mappings");
   }
@@ -300,7 +300,7 @@
 
     if (!monData.size) {
       monEls.clear();
-      body.innerHTML = `<tr><td colspan="7" style="padding:26px;text-align:center;color:var(--label)">Press a key on your device…</td></tr>`;
+      body.innerHTML = `<tr><td colspan="7" style="padding:26px;text-align:center;color:var(--label)">デバイスのボタンを押してください…</td></tr>`;
       return;
     }
     if (!monEls.size) body.innerHTML = ""; // drop the placeholder
@@ -362,7 +362,7 @@
       <td style="${mono}${td}">${r.last}</td>
       <td style="${mono}${td}">${r.min}</td>
       <td style="${mono}${td}">${r.max}</td>
-      <td style="${td}"><button class="icon-btn" data-mkmap="1" data-code="${r.usage}" data-name="${r.name}" title="Create mapping">${ICON.plus}</button></td>`;
+      <td style="${td}"><button class="icon-btn" data-mkmap="1" data-code="${r.usage}" data-name="${r.name}" title="マッピングを作成">${ICON.plus}</button></td>`;
   }
 
   /* ---------------- MACROS (32 slots, accordion) ----------------
@@ -392,7 +392,7 @@
 
   function macroPreview(i) {
     const steps = macroSteps(i);
-    if (!steps.length) return "(empty)";
+    if (!steps.length) return "(空)";
     return steps
       .map((step) => (step || []).map((u) => window.HRX_USAGES.usageName(u)).join(" + "))
       .join("  →  ");
@@ -408,7 +408,7 @@
       return `
       <div class="macro-slot ${open ? "open" : ""}">
         <button class="macro-head" data-macro="${i}">
-          <span class="macro-n">Macro ${i + 1}</span>
+          <span class="macro-n">マクロ ${i + 1}</span>
           <span class="macro-preview ${steps.length ? "" : "empty"}">${macroPreview(i)}</span>
           <span class="macro-usage">0xfff2${String(i + 1).padStart(4, "0")}</span>
           <span class="macro-chev" style="transform:rotate(${open ? 180 : 0}deg)">${ICON.chevron}</span>
@@ -421,14 +421,14 @@
     <div class="panel">
       <div class="panel-head">
         <div>
-          <div class="panel-title">Macros</div>
-          <div class="panel-sub">32 slots · ${used} in use. A macro is a sequence of steps; every key in a step is pressed together, and each step is held for <b>${dur} ms</b> (Settings → Macro entry duration).</div>
+          <div class="panel-title">マクロ</div>
+          <div class="panel-sub">32 スロット · ${used} 個使用。 マクロは一連の手順です。 各手順ではすべてのキーが同時に押され、各手順は <b>${dur} ミリ秒間</b> 実行されます。 （設定 → マクロ入力の間隔）。</div>
         </div>
       </div>
       <div class="panel-body">
         <div class="setting-card" style="margin-bottom:14px">
-          <div class="sc-label">How to fire a macro</div>
-          <div class="sc-help" style="margin-bottom:0">Build the steps below, then go to <b>Mappings</b>, add a mapping, and set its <b>output</b> to <b>Macro 1…32</b> (they live under “Macros” in the picker). Pressing that key runs the steps in order. Nothing reaches the device until you press <b>Save to device</b>.</div>
+          <div class="sc-label">マクロを起動する方法</div>
+          <div class="sc-help" style="margin-bottom:0">以下で手順を作成し、次に <b>マッピング</b> に進みます。 マッピングを追加し、その <b>出力</b> を <b>マクロ 1…32</b> に設定します。 （これらはピッカーの 「マクロ」 にあります）。 そのキーを押すと手順が順番に実行されます。 <b>デバイスへ保存</b> を押すまでは何もデバイスに送信されません。</div>
         </div>
         ${slots}
       </div>
@@ -443,36 +443,36 @@
     const rows = steps.map((step, n) => {
       const keys = (step || []).map((u, k) => `
         <div class="macro-key">
-          <button class="usage-btn" style="--cat:${window.HRX_USAGES.usageAccent(u)}" data-mkey="1" data-mi="${i}" data-step="${n}" data-k="${k}" title="Change this key">
+          <button class="usage-btn" style="--cat:${window.HRX_USAGES.usageAccent(u)}" data-mkey="1" data-mi="${i}" data-step="${n}" data-k="${k}" title="このキーを変更">
             <span class="u-cat-dot"></span>
             <span class="u-name">${window.HRX_USAGES.usageName(u)}</span>
             <span class="chev">${ICON.chevron}</span>
           </button>
-          <button class="chip-x" data-mkeydel="1" data-mi="${i}" data-step="${n}" data-k="${k}" title="Remove this key from the step">${ICON.x}</button>
+          <button class="chip-x" data-mkeydel="1" data-mi="${i}" data-step="${n}" data-k="${k}" title="このキーを手順から消去">${ICON.x}</button>
         </div>`).join('<span class="macro-plus">+</span>');
 
       return `
         <div class="macro-step">
           <span class="macro-step-n">${n + 1}</span>
           <div class="macro-keys">
-            ${keys || `<span class="hint">empty step — add a key</span>`}
-            <button class="combo-add" data-mkeyadd="1" data-mi="${i}" data-step="${n}" title="Add another key to this macro step (pressed together)">${ICON.plus}</button>
+            ${keys || `<span class="hint">手順なし — キーを追加</span>`}
+            <button class="combo-add" data-mkeyadd="1" data-mi="${i}" data-step="${n}" title="他のキーをこのマクロ手順に追加 （同時に押されます）">${ICON.plus}</button>
           </div>
           <div class="macro-step-ctrls">
-            <button class="icon-btn" data-mstepup="1" data-mi="${i}" data-step="${n}" title="Move step up" ${n === 0 ? "disabled" : ""}>${ICON.up}</button>
-            <button class="icon-btn" data-mstepdown="1" data-mi="${i}" data-step="${n}" title="Move step down" ${n === steps.length - 1 ? "disabled" : ""}>${ICON.down}</button>
-            <button class="icon-btn del" data-mstepdel="1" data-mi="${i}" data-step="${n}" title="Delete this step">${ICON.x}</button>
+            <button class="icon-btn" data-mstepup="1" data-mi="${i}" data-step="${n}" title="手順を上へ" ${n === 0 ? "disabled" : ""}>${ICON.up}</button>
+            <button class="icon-btn" data-mstepdown="1" data-mi="${i}" data-step="${n}" title="手順を下へ" ${n === steps.length - 1 ? "disabled" : ""}>${ICON.down}</button>
+            <button class="icon-btn del" data-mstepdel="1" data-mi="${i}" data-step="${n}" title="この手順を削除">${ICON.x}</button>
           </div>
         </div>`;
     }).join("");
 
     return `
       <div class="macro-body">
-        ${steps.length ? rows : `<div class="macro-empty">This macro is empty. Add a step to begin.</div>`}
+        ${steps.length ? rows : `<div class="macro-empty">このマクロは空です。 手順を追加してください。</div>`}
         <div class="macro-actions">
-          <button class="btn-hx btn-primary btn-sm" data-mstepadd="1" data-mi="${i}">${ICON.plus}<span>Add step</span></button>
-          <button class="btn-hx btn-sm" data-mclone="1" data-mi="${i}" ${steps.length ? "" : "disabled"}>${ICON.clone}<span>Copy to…</span></button>
-          <button class="btn-hx btn-sm" data-mclear="1" data-mi="${i}" ${steps.length ? "" : "disabled"}>${ICON.x}<span>Clear macro</span></button>
+          <button class="btn-hx btn-primary btn-sm" data-mstepadd="1" data-mi="${i}">${ICON.plus}<span>手順を追加</span></button>
+          <button class="btn-hx btn-sm" data-mclone="1" data-mi="${i}" ${steps.length ? "" : "disabled"}>${ICON.clone}<span>コピー…</span></button>
+          <button class="btn-hx btn-sm" data-mclear="1" data-mi="${i}" ${steps.length ? "" : "disabled"}>${ICON.x}<span>マクロを削除</span></button>
         </div>
       </div>`;
   }
@@ -521,7 +521,7 @@
         current: null,
         onSelect: (code) => {
           const steps = macroSteps(i).map((s) => s.slice());
-          if (steps[n].includes(code)) { toast("That key is already in this step"); return; }
+          if (steps[n].includes(code)) { toast("そのキーはすでにこの手順にあります"); return; }
           steps[n].push(code);
           setMacro(i, steps);
           redrawMacros();
@@ -554,24 +554,24 @@
 
     $$('[data-mclear]', root).forEach((b) => b.addEventListener("click", () => {
       const i = +b.dataset.mi;
-      if (!confirm("Clear Macro " + (i + 1) + "? (The device only changes when you Save.)")) return;
+      if (!confirm("マクロ " + (i + 1) + "を削除しますか？ （デバイスへは保存時のみ変更が適用されます。）")) return;
       setMacro(i, []);
       redrawMacros();
-      toast("Macro " + (i + 1) + " cleared");
+      toast("マクロ " + (i + 1) + " を削除");
     }));
 
     $$('[data-mclone]', root).forEach((b) => b.addEventListener("click", () => {
       const i = +b.dataset.mi;
-      const answer = prompt("Copy Macro " + (i + 1) + " to which slot? (1-32)");
+      const answer = prompt("このマクロ " + (i + 1) + " を、どのマクロ番号にコピーしますか？ (1-32)");
       if (answer == null) return;
       const target = parseInt(answer, 10);
-      if (!(target >= 1 && target <= 32)) { toast("Pick a slot between 1 and 32"); return; }
-      if (target - 1 === i) { toast("That is the same slot"); return; }
-      if (macroSteps(target - 1).length && !confirm("Macro " + target + " is not empty. Overwrite it?")) return;
+      if (!(target >= 1 && target <= 32)) { toast("1 から 32 までの番号を入力してください"); return; }
+      if (target - 1 === i) { toast("同じマクロ番号です"); return; }
+      if (macroSteps(target - 1).length && !confirm("マクロ " + target + " は空ではありません。 上書きしますか？")) return;
       setMacro(target - 1, macroSteps(i).map((s) => s.slice()));
       openMacro = target - 1;
       redrawMacros();
-      toast("Copied to Macro " + target);
+      toast("マクロ " + target + " へコピーしました");
     }));
   }
 
@@ -787,7 +787,7 @@
     a.download = (APP.config.title || "hid-remapper-config").trim().replace(/[^\w.-]+/g, "_") + ".json";
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    toast("Config exported");
+    toast("構成をエクスポート");
   }
 
   function importJson() {
@@ -802,8 +802,8 @@
           const obj = JSON.parse(reader.result);
           window.HRX_JSON.applyJson(obj);
           if (window.HRX.setTab) window.HRX.setTab("mappings");
-          toast("Imported " + ((obj.mappings && obj.mappings.length) || 0) + " mappings from " + file.name);
-        } catch (e) { toast("Import failed: " + ((e && e.message) || e)); }
+          toast( file.name + " ファイルから " + ((obj.mappings && obj.mappings.length) || 0) + " 個のマッピングをインポート" );
+        } catch (e) { toast("インポート失敗: " + ((e && e.message) || e)); }
       };
       reader.readAsText(file);
     });
@@ -820,13 +820,13 @@
 
   function deviceAction(kind) {
     const dev = window.HRX_DEVICE;
-    if (!dev.isConnected()) { toast("Connect a device first"); return; }
+    if (!dev.isConnected()) { toast("最初にデバイスを接続してください"); return; }
     if (kind === "flash") {
-      if (!confirm("Reboot the device into bootloader (BOOTSEL) mode? It will disconnect so you can drop a new .uf2.")) return;
-      dev.flashFirmware().then(() => toast("Device rebooting into bootloader…")).catch((e) => toast("Failed: " + ((e && e.message) || e)));
+      if (!confirm("デバイスをブートローダー (BOOTSEL) モードで再起動しますか？ 現在の接続が切断され、新しい .uf2 ファイルをドロップできます。")) return;
+      dev.flashFirmware().then(() => toast("デバイスをブートローダーで再起動中…")).catch((e) => toast("Failed: " + ((e && e.message) || e)));
     } else if (kind === "flashb") {
-      if (!confirm("Flash the B-side (host) firmware to match this device?")) return;
-      dev.flashBSide().then(() => toast("Flashing B-side…")).catch((e) => toast("Failed: " + ((e && e.message) || e)));
+      if (!confirm("このデバイスに合った Bサイド（ホスト）ファームウェアを書き込みますか？")) return;
+      dev.flashBSide().then(() => toast("Bサイドを書き込み中…")).catch((e) => toast("Failed: " + ((e && e.message) || e)));
     } else if (kind === "pair") {
       dev.pairNewDevice().then(() => toast("Pairing mode enabled on device")).catch((e) => toast("Failed: " + ((e && e.message) || e)));
     } else if (kind === "bonds") {
@@ -850,15 +850,15 @@
     container.innerHTML = `
     <div class="panel"><div class="panel-body">
       <div class="settings-grid">
-        ${card(ICON.download, "Export config", "Download the full configuration (mappings, macros, expressions, settings) as a JSON file.", "Export JSON", false, "export")}
-        ${card(ICON.file, "Import config", "Load a configuration from a JSON file on your computer.", "Import JSON", false, "import")}
-        ${card(ICON.bolt, "Flash firmware", "Reboot into bootloader so you can drop a new .uf2 file.", "Enter bootloader", true, "flash")}
-        ${card(ICON.layers, "Flash B-side", "Flash the host-side firmware for two-board (dual) devices.", "Flash B-side", true, "flashb")}
+        ${card(ICON.download, "構成をエクスポート", "構成全体（マッピング、マクロ、expressions、設定）を JSON ファイルとしてダウンロードします。", "エクスポート JSON", false, "export")}
+        ${card(ICON.file, "構成をインポート", "コンピューター上の JSON ファイルから構成を読み込みます。", "インポート JSON", false, "import")}
+        ${card(ICON.bolt, "ファームウェアを書き込む", "ブートローダーを起動して、新しい .uf2 ファイルをドロップして書き込みます。", "ブートローダーを起動", true, "flash")}
+        ${card(ICON.layers, "Bサイドを書き込む", "2つの基板を使った（デュアル）デバイスの場合、ホスト側のファームウェアを書き込みます。", "Bサイドを書き込む", true, "flashb")}
         ${isBluetooth() ? card(ICON.plug, "Pair new device", "Put a Bluetooth remapper into pairing mode.", "Enable pairing", false, "pair") : ""}
         ${isBluetooth() ? card(ICON.x, "Forget all devices", "Clear every Bluetooth bond stored on the remapper. They must be paired again.", "Clear bonds", true, "bonds") : ""}
       </div>
       <div class="qa-section-head" style="margin:26px 0 14px">
-        <h3>Firmware downloads</h3>
+        <h3>ファームウェアのダウンロード</h3>
         <p>
           <span class="fw-release" id="fwRelease">${FW_VERSION_FALLBACK}</span>
           — every link below is that release.
