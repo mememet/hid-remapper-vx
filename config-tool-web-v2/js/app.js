@@ -10,16 +10,16 @@ const { h, $, $$, toast } = window.HRX;
    Advanced ▾ menu: Macros · Expressions (as-is) · Actions
 */
 const PRIMARY_TABS = [
-  { id: "mappings", label: "Mappings", icon: ICON.chip },
-  { id: "quick", label: "Quick Start", icon: ICON.bolt },
-  { id: "monitor", label: "Monitor", icon: ICON.activity },
-  { id: "settings", label: "Settings", icon: ICON.settings },
+  { id: "mappings", label: "マッピング", icon: ICON.chip },
+  { id: "quick", label: "クイックスタート", icon: ICON.bolt },
+  { id: "monitor", label: "モニター", icon: ICON.activity },
+  { id: "settings", label: "設定", icon: ICON.settings },
 ];
 const ADVANCED_TABS = [
-  { id: "macros", label: "Macros", icon: ICON.macro },
+  { id: "macros", label: "マクロ", icon: ICON.macro },
   { id: "expressions", label: "Expressions", icon: ICON.fx },
   { id: "quirks", label: "Quirks", icon: ICON.wrench },
-  { id: "actions", label: "Actions", icon: ICON.file },
+  { id: "actions", label: "アクション", icon: ICON.file },
 ];
 
 function renderTopbar() {
@@ -29,7 +29,7 @@ function renderTopbar() {
       <div class="brand-glyph">${ICON.chip}</div>
       <div>
         <div class="brand-name">HID Remapper VX</div>
-        <div class="brand-tag">Web Config</div>
+        <div class="brand-tag">Web Config (Ja)</div>
       </div>
     </div>
     <div class="conn-actions" id="connActions"></div>
@@ -217,7 +217,7 @@ async function handleConn(act) {
         applyDeviceConfig(config);
         configSource = "device";
         render();
-        toast(info.name + "に接続して " + ((config.mappings && config.mappings.length) || 0) + "個のマッピングを読み込みました。");
+        toast(info.name + "に接続して " + ((config.mappings && config.mappings.length) || 0) + "個のマッピングを読み込みました");
       } catch (e) {
         render();
         toast("Connected to " + info.name + ", but the load failed: " + String((e && e.message) || e) + " — saving is blocked until a load succeeds");
@@ -300,7 +300,7 @@ if (window.HRX_DEVICE && window.HRX_DEVICE.onDisconnect) {
     APP.connection = "disconnected";
     configSource = "json";  // what's on screen came from the device, but the device is gone now
     render();
-    toast("Device unplugged — your config is still here. Reconnect to save it.");
+    toast("デバイスが切断されました。 — 構成は残されています。保存するには再度接続してください。");
   });
 }
 
