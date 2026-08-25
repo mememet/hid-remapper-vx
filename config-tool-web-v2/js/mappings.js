@@ -223,7 +223,7 @@
     const emptyState = `<div class="empty-state">
           <div class="es-glyph">${ICON.chip}</div>
           <h4>マッピングがありません</h4>
-          <div>マッピングを追加するか <b>Quick Start</b> へ行ってワンクリックでプリセットを追加</div>
+          <div>マッピングを追加するか <b>クイックスタート</b> へ行ってワンクリックでプリセットを追加</div>
         </div>`;
 
     // sort, if a column header was clicked (this REORDERS APP.mappings, exactly like v1 —
