@@ -54,7 +54,7 @@
             { opacity: 0, transform: "translateY(-6px) scale(.97)" },
             { opacity: 1, transform: "none" },
           ],
-          { duration: 220, easing: "ease-out" }
+          { duration: 320, easing: "ease-out" }
         );
       }
     });
