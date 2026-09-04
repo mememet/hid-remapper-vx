@@ -118,7 +118,7 @@
            </select>`)}
 
         ${card("flags", "デバイスフラグ",
-          "低レベルyのスイッチ。 必要な場合を除き、これらは触らないでください。",
+          "低レベルのスイッチ。 必要な場合を除き、これらは触らないでください。",
           `${toggleRow('data-flag-set="normalizeGamepad"', s.normalizeGamepad !== false, "Normalize gamepad inputs")}
            ${toggleRow('data-flag-set="gpioOutputMode"', !!s.gpioOutputMode, "GPIO output: open-drain (off = push-pull)")}
            ${toggleRow('data-flag-set="ignoreAuthDevInputs"', !!s.ignoreAuthDevInputs, "Ignore auth device inputs")}`)}
