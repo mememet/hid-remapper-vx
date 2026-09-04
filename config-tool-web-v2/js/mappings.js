@@ -98,7 +98,7 @@
     }).join("");
     const sth = [
       ["sticky", "Sticky", "Sticky — 出力が固定されます。 もう一度押すと開放されます"],
-      ["tap", "Tap", "Tap — 素早く2回押すと出力されます (tap-holdの値よりも短く押すと出力されます)"],
+      ["tap", "Tap", "Tap — 素早く２回押すと出力されます (tap-holdの値よりも短く押すと出力されます)"],
       ["hold", "Hold", "Hold — キーを押し続けている間だけ出力されます (tap-holdの値よりも長く押すと出力されます)"],
     ].map(([k, lbl, title]) =>
       `<span class="chk mode word m-${k} ${m[k] ? "on" : ""}" data-flag="${k}" data-mid="${m.id}" title="${title}">${lbl}</span>`
@@ -261,7 +261,7 @@
       <div class="panel-head">
         <div>
           <div class="panel-title">マッピング</div>
-          <div class="panel-sub">各入力はそれぞれ1つの枠に存在します。 線は操作ごとに分岐して別々の出力になります。</div>
+          <div class="panel-sub">各入力はそれぞれ１つの枠に存在します。 線は操作ごとに分岐して別々の出力になります。</div>
         </div>
       </div>
       <div class="panel-body">
@@ -269,7 +269,7 @@
         <div class="toolbar-row">
           <button class="btn-hx btn-primary" id="addMap">${ICON.plus}<span>マッピングを追加</span></button>
           <button class="btn-hx ${APP.groupDisabled ? "btn-primary" : "btn-ghost"}" id="groupDisabledBtn">${ICON.power}<span>最後に無効</span></button>
-          <span class="hint" style="margin-left:auto">同じ入力ボタンは 1枠で各操作に対応する線の分岐になります</span>
+          <span class="hint" style="margin-left:auto">同じ入力ボタンは １枠で各操作に対応する線の分岐になります</span>
         </div>
       </div>
     </div>`;
