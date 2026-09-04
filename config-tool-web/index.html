@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet">
-    <title>HID Remapper VX - Visual Enhanced</title>
+    <title>HID Remapper VX - Visual Enhanced (JA)</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="ir-codes.js"></script>
     <script src="code.js" type="module"></script>
@@ -16,19 +16,19 @@
 
     <div class="container d-flex flex-column" style="max-width: 920px; min-height: 100vh;">
 
-        <h1 class="mt-sm-5 mt-3">HID Remapper <small class="text-muted" style="font-size: 0.5em;">VX — Visual Enhanced</small></h1>
+        <h1 class="mt-sm-5 mt-3">HID Remapper <small class="text-muted" style="font-size: 0.5em;">VX — Visual Enhanced (JA)</small></h1>
 
         <div class="row my-4">
             <div class="col">
-                <button id="open_device" type="button" class="btn btn-primary w-100">Open device</button>
+                <button id="open_device" type="button" class="btn btn-primary w-100">デバイスを開く</button>
             </div>
             <div class="col">
-                <button id="load_from_device" type="button" class="btn btn-primary w-100">Load from device</button>
+                <button id="load_from_device" type="button" class="btn btn-primary w-100">デバイスから読み込む</button>
             </div>
             <div class="col">
                 <button id="save_to_device" type="button" class="btn btn-primary w-100 position-relative">
                     <span id="save_to_device_checkmark" class="position-absolute top-0 start-100 translate-middle badge bg-success rounded-pill hub_port_badge d-none">&check;</span>
-                    <span>Save to device</span>
+                    <span>デバイスへ保存</span>
                 </button>
             </div>
         </div>
@@ -43,13 +43,13 @@
         <div id="error" class="alert alert-danger d-none"></div>
 
         <div class="nav nav-tabs flex-nowrap" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-mappings-tab" data-bs-toggle="tab" data-bs-target="#nav-mappings" type="button" role="tab">Mappings</button>
-            <button class="nav-link" id="nav-settings-tab" data-bs-toggle="tab" data-bs-target="#nav-settings" type="button" role="tab">Settings</button>
-            <button class="nav-link" id="nav-macros-tab" data-bs-toggle="tab" data-bs-target="#nav-macros" type="button" role="tab">Macros</button>
+            <button class="nav-link active" id="nav-mappings-tab" data-bs-toggle="tab" data-bs-target="#nav-mappings" type="button" role="tab">マッピング</button>
+            <button class="nav-link" id="nav-settings-tab" data-bs-toggle="tab" data-bs-target="#nav-settings" type="button" role="tab">設定</button>
+            <button class="nav-link" id="nav-macros-tab" data-bs-toggle="tab" data-bs-target="#nav-macros" type="button" role="tab">マクロ</button>
             <button class="nav-link" id="nav-expressions-tab" data-bs-toggle="tab" data-bs-target="#nav-expressions" type="button" role="tab">Expressions</button>
-            <button class="nav-link" id="nav-actions-tab" data-bs-toggle="tab" data-bs-target="#nav-actions" type="button" role="tab">Actions</button>
-            <button class="nav-link" id="nav-monitor-tab" data-bs-toggle="tab" data-bs-target="#nav-monitor" type="button" role="tab">Monitor</button>
-            <button class="nav-link" id="nav-examples-tab" data-bs-toggle="tab" data-bs-target="#nav-examples" type="button" role="tab">Quick Actions</button>
+            <button class="nav-link" id="nav-actions-tab" data-bs-toggle="tab" data-bs-target="#nav-actions" type="button" role="tab">アクション</button>
+            <button class="nav-link" id="nav-monitor-tab" data-bs-toggle="tab" data-bs-target="#nav-monitor" type="button" role="tab">モニター</button>
+            <button class="nav-link" id="nav-examples-tab" data-bs-toggle="tab" data-bs-target="#nav-examples" type="button" role="tab">クイックアクション</button>
         </div>
 
         <div class="tab-content flex-grow-1">
@@ -94,15 +94,15 @@
                     <div style="min-width: 920px; width: 100%;">
                         <div class="row my-2 align-items-end">
                             <div class="col-2"></div>
-                            <div class="col-3 text-center"><a href="#" id="input-column-header" class="text-decoration-none text-reset d-block">Input</a></div>
-                            <div class="col-3 text-center"><a href="#" id="output-column-header" class="text-decoration-none text-reset d-block">Output</a></div>
+                            <div class="col-3 text-center"><a href="#" id="input-column-header" class="text-decoration-none text-reset d-block">入力</a></div>
+                            <div class="col-3 text-center"><a href="#" id="output-column-header" class="text-decoration-none text-reset d-block">出力</a></div>
                             <div class="col-3">
                                 <div class="d-flex align-items-end">
-                                    <div class="flex-fill text-center"><a href="#" id="layer-column-header" class="text-decoration-none text-reset d-block" title="Layers let you have different key layouts. Layer 0 is the default. Use a mapping to switch layers (e.g. hold a button to activate Layer 1).">Layer <span style="font-size: 0.7em; opacity: 0.6;">&#9432;</span></a></div>
+                                    <div class="flex-fill text-center"><a href="#" id="layer-column-header" class="text-decoration-none text-reset d-block" title="Layers let you have different key layouts. Layer 0 is the default. Use a mapping to switch layers (e.g. hold a button to activate Layer 1).">レイヤー <span style="font-size: 0.7em; opacity: 0.6;">&#9432;</span></a></div>
                                     <div class="text-start pt-1" style="writing-mode: vertical-rl; transform: rotate(180deg); line-height: 1.2em;"><span title="Sticky: toggle a Layer on/off (only works with Layer targets)">Sticky</span><br><span title="Tap: fires on quick press-and-release (works with any mapping)">Tap</span><br><span title="Hold: fires only when held down (works with any mapping). Use Tap + Hold on the same key for dual function.">Hold</span></div>
                                 </div>
                             </div>
-                            <div class="col-1 text-center d-flex align-items-end justify-content-center gap-1"><span style="font-size:0.75rem;">Scale</span><span style="font-size:0.6rem;opacity:0.5;">|</span><span style="font-size:0.75rem;">Color</span></div>
+                            <div class="col-1 text-center d-flex align-items-end justify-content-center gap-1"><span style="font-size:0.75rem;">Scale</span><span style="font-size:0.6rem;opacity:0.5;">|</span><span style="font-size:0.75rem;">色</span></div>
                         </div>
 
                         <div id="mappings">
@@ -111,8 +111,8 @@
                 </div>
 
                 <div class="text-center mt-2 mb-3">
-                    <button id="add_mapping" type="button" class="btn btn-primary">Add mapping</button>
-                    <button id="sort_by_input" type="button" class="btn btn-outline-secondary btn-sm ms-2" title="Group mappings with the same input together, sorted by layer">⇅ Group by Input</button>
+                    <button id="add_mapping" type="button" class="btn btn-primary">マッピングを追加</button>
+                    <button id="sort_by_input" type="button" class="btn btn-outline-secondary btn-sm ms-2" title="Group mappings with the same input together, sorted by layer">⇅ 入力でグループ化</button>
                 </div>
 
             </div>
@@ -327,19 +327,19 @@
 
                 <div class="row mt-4">
                     <div class="col-4">
-                        <button id="download_json" type="button" class="btn btn-primary w-100">Export JSON</button>
+                        <button id="download_json" type="button" class="btn btn-primary w-100">JSONをエクスポート</button>
                     </div>
                     <div class="col-4">
-                        <button id="upload_json" type="button" class="btn btn-primary w-100">Import JSON</button>
+                        <button id="upload_json" type="button" class="btn btn-primary w-100">JSONをインポート</button>
                     </div>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-4">
-                        <button id="flash_firmware" type="button" class="btn btn-primary w-100">Flash firmware</button>
+                        <button id="flash_firmware" type="button" class="btn btn-primary w-100">ファームウェアを書き込む</button>
                     </div>
                     <div class="col-4" id="flash_b_side_container">
-                        <button id="flash_b_side" type="button" class="btn btn-primary w-100">Flash B side</button>
+                        <button id="flash_b_side" type="button" class="btn btn-primary w-100">Ｂサイドを書き込む</button>
                     </div>
                 </div>
 
@@ -510,10 +510,10 @@
 
             <div class="tab-pane" id="nav-monitor" role="tabpanel" tabindex="0">
 
-                <p class="mt-4">Interact with the device connected to HID Remapper to see what usage codes it generates.</p>
+                <p class="mt-4">HID Remapperに接続されたデバイスを操作して、表示されたコードを確認してください。</p>
 
                 <div>
-                    <button id="monitor_clear" type="button" class="btn btn-primary">Clear</button>
+                    <button id="monitor_clear" type="button" class="btn btn-primary">クリア</button>
                 </div>
 
                 <div id="monitor_header" class="row p-1 mt-4 mb-2 d-none">
@@ -630,8 +630,8 @@
                     <button type="button" class="btn btn-sm move_up_btn p-0">&#9650;</button>
                     <button type="button" class="btn btn-sm move_down_btn p-0">&#9660;</button>
                 </div>
-                <button type="button" class="btn clone_mapping_btn" title="Clone">⧉</button>
-                <button type="button" class="btn delete_button" title="Delete">×</button>
+                <button type="button" class="btn clone_mapping_btn" title="複製">⧉</button>
+                <button type="button" class="btn delete_button" title="削除">×</button>
             </div>
             <div class="col-3">
                 <button type="button" class="btn btn-primary w-100 source_button position-relative">
@@ -723,7 +723,7 @@
                     <span class="macro_name flex-shrink-0">Macro N</span>
                     <span class="macro_preview text-muted px-3 flex-fill text-truncate"></span>
                 </button>
-                <button type="button" class="clone_macro_button btn btn-sm position-absolute" style="right: 3rem; top: 50%; transform: translateY(-50%); z-index: 2; padding: 0.1rem 0.4rem; font-size: 0.75rem;" title="Clone to next empty slot">Clone</button>
+                <button type="button" class="clone_macro_button btn btn-sm position-absolute" style="right: 3rem; top: 50%; transform: translateY(-50%); z-index: 2; padding: 0.1rem 0.4rem; font-size: 0.75rem;" title="下にある空スロットに複製">複製</button>
             </h2>
             <div id="collapse_X" class="accordion-collapse collapse" data-bs-parent="#macros_container">
                 <div class="accordion-body">
@@ -750,7 +750,7 @@
         <div class="btn-group macro_item col-auto">
             <button type="button" class="delete_macro_item btn btn-primary">×</button>
             <button type="button" class="macro_item_usage btn btn-primary" data-hid-usage="0x00000000">
-                <span class="button_label">Nothing</span>
+                <span class="button_label">なし</span>
             </button>
         </div>
     </template>
@@ -781,7 +781,7 @@
 
     <template id="monitor_template">
         <div class="row monitor_row p-1 my-2 rounded">
-            <div class="col-1"><button type="button" title="map this" class="btn btn-sm btn-primary map_this_button" style="padding: 0rem 0.4rem;">+</button></div>
+            <div class="col-1"><button type="button" title="これをマップに追加" class="btn btn-sm btn-primary map_this_button" style="padding: 0rem 0.4rem;">+</button></div>
             <div class="col-2 text-center monitor_usage position-relative">
                 <span class="position-absolute top-50 start-0 translate-middle badge bg-info rounded-pill hub_port_badge">0</span>
                 <span class="font-monospace usage_label"></span>
@@ -858,13 +858,13 @@
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title usage_modal_title">Select input</h5>
+                    <h5 class="modal-title usage_modal_title">入力を選択</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="overflow-y: scroll;">
                     <div class="row hub_port_container">
                         <div class="col-auto">
-                            <label for="source_port_dropdown" class="col-form-label">Port</label>
+                            <label for="source_port_dropdown" class="col-form-label">ポート</label>
                         </div>
                         <div class="col-auto">
                             <select class="form-select hub_port_dropdown" id="source_port_dropdown">
@@ -889,7 +889,7 @@
                         <div class="col">
                         </div>
                         <div class="col-auto">
-                            <label for="input_labels_modal_dropdown" class="col-form-label">Input labels</label>
+                            <label for="input_labels_modal_dropdown" class="col-form-label">入力ラベル</label>
                         </div>
                         <div class="col-auto">
                             <select class="form-select" id="input_labels_modal_dropdown">
@@ -901,12 +901,12 @@
                         </div>
                         <div class="col-3 position-relative">
                             <span class="position-absolute top-50 start-100 badge bg-success rounded-pill have_preferred_result_checkmark d-none" style="translate: -100% -50%">&check;</span>
-                            <input type="text" class="form-control usage_search_box" placeholder="Search">
+                            <input type="text" class="form-control usage_search_box" placeholder="検索">
                         </div>
                     </div>
                     <div class="row mt-2 mb-1 align-items-center custom_hex_row">
                         <div class="col-auto">
-                            <small class="text-muted">Custom code:</small>
+                            <small class="text-muted">カスタムコード:</small>
                         </div>
                         <div class="col-auto">
                             <div class="input-group input-group-sm">
@@ -915,7 +915,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary btn-sm apply_custom_hex">Apply</button>
+                            <button type="button" class="btn btn-primary btn-sm apply_custom_hex">適用</button>
                         </div>
                     </div>
                     <div class="col android_remote_usages mt-3">
@@ -925,16 +925,16 @@
                         <h6 class="text-muted usage-category-header">📡 Samsung Tizen TV</h6>
                     </div>
                     <div class="col media_usages mt-3">
-                        <h6 class="text-muted usage-category-header">🎵 Media</h6>
+                        <h6 class="text-muted usage-category-header">🎵 メディア</h6>
                     </div>
                     <div class="col mouse_usages mt-3">
-                        <h6 class="text-muted usage-category-header">🖱️ Mouse</h6>
+                        <h6 class="text-muted usage-category-header">🖱️ マウス</h6>
                     </div>
                     <div class="col gamepad_usages mt-3">
-                        <h6 class="text-muted usage-category-header">🎮 Gamepad</h6>
+                        <h6 class="text-muted usage-category-header">🎮 ゲームパッド</h6>
                     </div>
                     <div class="col keyboard_usages mt-3">
-                        <h6 class="text-muted usage-category-header">⌨️ Keyboard</h6>
+                        <h6 class="text-muted usage-category-header">⌨️ キーボード</h6>
                     </div>
                     <div class="col expressions_usage mt-3">
                         <h6 class="text-muted usage-category-header">fx Expressions</h6>
@@ -946,16 +946,16 @@
                         <h6 class="text-muted usage-category-header">IO GPIO Pins</h6>
                     </div>
                     <div class="col layers_usage mt-3">
-                        <h6 class="text-muted usage-category-header">Layers</h6>
+                        <h6 class="text-muted usage-category-header">レイヤー</h6>
                     </div>
                     <div class="col macros_usage mt-3">
-                        <h6 class="text-muted usage-category-header">Macros</h6>
+                        <h6 class="text-muted usage-category-header">マクロ</h6>
                     </div>
                     <div class="col analogs_usage mt-3">
-                        <h6 class="text-muted usage-category-header">~ Analog</h6>
+                        <h6 class="text-muted usage-category-header">~ アナログ</h6>
                     </div>
                     <div class="col other_usages mt-3">
-                        <h6 class="text-muted usage-category-header">Other</h6>
+                        <h6 class="text-muted usage-category-header">その他</h6>
                     </div>
                     <div class="col extra_usages mt-3">
                     </div>
@@ -968,13 +968,13 @@
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title usage_modal_title">Select output</h5>
+                    <h5 class="modal-title usage_modal_title">出力を選択</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="overflow-y: scroll;">
                     <div class="row hub_port_container">
                         <div class="col-auto hub_port_inputs">
-                            <label for="target_port_dropdown" class="col-form-label">Port</label>
+                            <label for="target_port_dropdown" class="col-form-label">ポート</label>
                         </div>
                         <div class="col-auto hub_port_inputs">
                             <select class="form-select hub_port_dropdown" id="target_port_dropdown">
@@ -1014,7 +1014,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary btn-sm apply_custom_hex">Apply</button>
+                            <button type="button" class="btn btn-primary btn-sm apply_custom_hex">適用</button>
                         </div>
                     </div>
                     <div class="col android_remote_usages mt-3">
@@ -1024,22 +1024,22 @@
                         <h6 class="text-muted usage-category-header">📡 Samsung Tizen TV</h6>
                     </div>
                     <div class="col media_usages mt-3">
-                        <h6 class="text-muted usage-category-header">🎵 Media</h6>
+                        <h6 class="text-muted usage-category-header">🎵 メディア</h6>
                     </div>
                     <div class="col mouse_usages mt-3">
-                        <h6 class="text-muted usage-category-header">🖱️ Mouse</h6>
+                        <h6 class="text-muted usage-category-header">🖱️ マウス</h6>
                     </div>
                     <div class="col gamepad_usages mt-3">
-                        <h6 class="text-muted usage-category-header">🎮 Gamepad</h6>
+                        <h6 class="text-muted usage-category-header">🎮 ゲームパッド</h6>
                     </div>
                     <div class="col keyboard_usages mt-3">
-                        <h6 class="text-muted usage-category-header">⌨️ Keyboard</h6>
+                        <h6 class="text-muted usage-category-header">⌨️ キーボード</h6>
                     </div>
                     <div class="col layers_usage mt-3">
-                        <h6 class="text-muted usage-category-header">Layers</h6>
+                        <h6 class="text-muted usage-category-header">レイヤー</h6>
                     </div>
                     <div class="col macros_usage mt-3">
-                        <h6 class="text-muted usage-category-header">Macros</h6>
+                        <h6 class="text-muted usage-category-header">マクロ</h6>
                     </div>
                     <div class="col expressions_usage mt-3">
                         <h6 class="text-muted usage-category-header">fx Expressions</h6>
@@ -1051,7 +1051,7 @@
                         <h6 class="text-muted usage-category-header">IO GPIO Pins</h6>
                     </div>
                     <div class="col analogs_usage mt-3">
-                        <h6 class="text-muted usage-category-header">~ Analog</h6>
+                        <h6 class="text-muted usage-category-header">~ アナログ</h6>
                     </div>
                     <div class="col rgb_led_usage mt-3">
                         <h6 class="text-muted usage-category-header">&#9728; RGB LED</h6>
@@ -1060,7 +1060,7 @@
                         <h6 class="text-muted usage-category-header">&#128225; IR</h6>
                     </div>
                     <div class="col other_usages mt-3">
-                        <h6 class="text-muted usage-category-header">Other</h6>
+                        <h6 class="text-muted usage-category-header">その他</h6>
                     </div>
                     <div class="col extra_usages mt-3">
                     </div>
