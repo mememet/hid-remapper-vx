@@ -136,7 +136,7 @@
       <div class="qa-section">
         <div class="qa-section-head">
           <h3>プリセットの修正</h3>
-          <p>１クリックで実際に動作するマッピングが追加されます。
+          <p>ワンクリックで実際に動作するマッピングが追加されます。
              <b>デバイスへ保存</b> を押すまでデバイスには何も送信されません。</p>
         </div>
         <div class="preset-grid">${presetCards}</div>
