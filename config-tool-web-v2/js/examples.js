@@ -421,7 +421,7 @@ const examples = [
         }
     },
     {
-        'description': '1ボタンドラッグロック（シンプル）: 長押しでロック、長押しでロック解除',
+        'description': '１ボタンドラッグロック（シンプル）: 長押しでロック、長押しでロック解除',
         'config': {
             "version": 12,
             "unmapped_passthrough_layers": [
