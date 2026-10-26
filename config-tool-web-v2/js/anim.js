@@ -5,7 +5,7 @@
    ============================================================ */
 (function () {
   const SEL = ".map-row[data-mid], .wg-branch[data-mid], .wire-group[data-groupkey]";
-  const DUR = 280;
+  const DUR = 380;
   const EASE = "cubic-bezier(.2,.75,.2,1)";
 
   function keyOf(el) {
@@ -54,7 +54,7 @@
             { opacity: 0, transform: "translateY(-6px) scale(.97)" },
             { opacity: 1, transform: "none" },
           ],
-          { duration: 220, easing: "ease-out" }
+          { duration: 320, easing: "ease-out" }
         );
       }
     });
