@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if ("hid" in navigator) {
         navigator.hid.addEventListener('disconnect', hid_on_disconnect);
     } else {
-        display_error("Your browser doesn't support WebHID. Try Chrome (desktop version) or a Chrome-based browser.");
+        display_error("このブラウザは WebHID をサポートしていません。 Chrome (デスクトップ版) か Chromeベースのブラウザをお試しください。");
     }
 
     setup_examples();
@@ -1498,7 +1498,7 @@ function create_macro_from_combo(badge) {
         }
     }
     if (target_index === -1) {
-        display_error("No empty macro slot available.");
+        display_error("空のマクロスロットがありません。");
         return;
     }
     config['macros'][target_index] = [keys];
@@ -1703,7 +1703,7 @@ function setup_macros() {
         let clone = template.content.cloneNode(true).firstElementChild;
         clone.id = 'macro_' + i;
         clone.querySelector('.accordion-button').setAttribute('data-bs-target', '#collapse_' + i);
-        clone.querySelector('.accordion-button').querySelector('.macro_name').innerText = 'Macro ' + (i + 1);
+        clone.querySelector('.accordion-button').querySelector('.macro_name').innerText = 'マクロ ' + (i + 1);
         clone.querySelector('.accordion-collapse').id = 'collapse_' + i;
         clone.querySelector('.add_macro_entry').addEventListener("click", () => {
             const entry_element = add_macro_entry(clone);
@@ -1774,7 +1774,7 @@ function set_macros_config_from_ui_state() {
 
 function clone_macro(source_index) {
     if (config['macros'][source_index].length === 0) {
-        display_error("Macro " + (source_index + 1) + " is empty, nothing to clone.");
+        display_error("マクロ " + (source_index + 1) + " は空なので複製しませんでした。");
         return;
     }
     let target_index = -1;
@@ -1785,7 +1785,7 @@ function clone_macro(source_index) {
         }
     }
     if (target_index === -1) {
-        display_error("No empty macro slot available.");
+        display_error("空のマクロスロットがありません。");
         return;
     }
     config['macros'][target_index] = structuredClone(config['macros'][source_index]);
