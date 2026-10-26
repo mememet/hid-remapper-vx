@@ -46,23 +46,23 @@
       <div class="modal modal-json">
         <div class="modal-head">
           <div>
-            <div class="modal-kicker">Device configuration</div>
-            <div class="modal-title">Edit config JSON</div>
+            <div class="modal-kicker">デバイスの設定</div>
+            <div class="modal-title">JSON構成ファイルの編集</div>
           </div>
           <div class="modal-spacer"></div>
-          <span class="cfg-status" id="cfgStatus">${IC.check}<span>Valid JSON</span></span>
+          <span class="cfg-status" id="cfgStatus">${IC.check}<span>有効なJSON</span></span>
           <button class="icon-btn modal-close" id="cfgClose" title="Close">${IC.x}</button>
         </div>
         <div class="modal-body">
-          <div class="cfg-hint">Full device configuration in HID-Remapper format (schema <b>version 18</b>). Edit it by hand and press Apply — values map back into Mappings, Settings and Expressions. Nothing changes until you Apply.</div>
+          <div class="cfg-hint">HID-Remapperフォーマット (スキーマ <b>バージョン 18</b>) の完全なデバイス構成。 手動で編集して「適用」を押してください。 — 値はマッピング、設定、Expressionsに適用されます。 適用するまでは何も変更されません。</div>
           <textarea class="cfg-json" id="cfgJson" spellcheck="false"></textarea>
           <div class="cfg-error" id="cfgError"></div>
         </div>
         <div class="modal-foot">
-          <button class="btn-hx btn-sm btn-ghost" id="cfgFormat">${IC.wand}<span>Format</span></button>
+          <button class="btn-hx btn-sm btn-ghost" id="cfgFormat">${IC.wand}<span>体裁</span></button>
           <div class="modal-spacer"></div>
-          <button class="btn-hx" id="cfgCancel">Cancel</button>
-          <button class="btn-hx btn-primary" id="cfgApply">${IC.check}<span>Apply</span></button>
+          <button class="btn-hx" id="cfgCancel">キャンセル</button>
+          <button class="btn-hx btn-primary" id="cfgApply">${IC.check}<span>適用</span></button>
         </div>
       </div>`;
     document.body.appendChild(scrim);
@@ -93,7 +93,7 @@
   }
   function requestClose() {
     if (mState && mState.ta.value !== mState.initial) {
-      if (!confirm("Discard changes to the config JSON?")) return;
+      if (!confirm("JSON構成への変更を破棄しますか？")) return;
     }
     close();
   }
@@ -106,15 +106,15 @@
     const res = parseCurrent();
     if (res.ok && res.obj && typeof res.obj === "object") {
       mState.statusEl.className = "cfg-status ok";
-      mState.statusEl.innerHTML = `${IC.check}<span>Valid JSON</span>`;
+      mState.statusEl.innerHTML = `${IC.check}<span>有効なJSON</span>`;
       mState.errEl.style.display = "none";
       mState.ta.classList.remove("bad");
       return true;
     }
     mState.statusEl.className = "cfg-status err";
-    mState.statusEl.innerHTML = `${IC.x}<span>Invalid</span>`;
+    mState.statusEl.innerHTML = `${IC.x}<span>無効</span>`;
     mState.errEl.style.display = "block";
-    mState.errEl.textContent = res.msg ? "Parse error: " + res.msg : "Top level must be a JSON object.";
+    mState.errEl.textContent = res.msg ? "解析エラー: " + res.msg : "先頭はJSONオブジェクトである必要があります。";
     mState.ta.classList.add("bad");
     return false;
   }
@@ -125,12 +125,12 @@
     validate();
   }
   function apply() {
-    if (!validate()) { toast("Fix the JSON before applying"); return; }
+    if (!validate()) { toast("適用する前にJSONを修正してください"); return; }
     const res = parseCurrent();
     applyJson(res.obj);
     close();
     if (window.HRX && window.HRX.setTab) window.HRX.setTab("settings");
-    toast("Configuration applied");
+    toast("構成が適用されました");
   }
 
   window.openConfigJson = open;
