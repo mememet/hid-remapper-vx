@@ -10,16 +10,16 @@ const { h, $, $$, toast } = window.HRX;
    Advanced ▾ menu: Macros · Expressions (as-is) · Actions
 */
 const PRIMARY_TABS = [
-  { id: "mappings", label: "Mappings", icon: ICON.chip },
-  { id: "quick", label: "Quick Start", icon: ICON.bolt },
-  { id: "monitor", label: "Monitor", icon: ICON.activity },
-  { id: "settings", label: "Settings", icon: ICON.settings },
+  { id: "mappings", label: "マッピング", icon: ICON.chip },
+  { id: "quick", label: "クイックスタート", icon: ICON.bolt },
+  { id: "monitor", label: "モニター", icon: ICON.activity },
+  { id: "settings", label: "設定", icon: ICON.settings },
 ];
 const ADVANCED_TABS = [
-  { id: "macros", label: "Macros", icon: ICON.macro },
+  { id: "macros", label: "マクロ", icon: ICON.macro },
   { id: "expressions", label: "Expressions", icon: ICON.fx },
   { id: "quirks", label: "Quirks", icon: ICON.wrench },
-  { id: "actions", label: "Actions", icon: ICON.file },
+  { id: "actions", label: "アクション", icon: ICON.file },
 ];
 
 function renderTopbar() {
@@ -29,7 +29,7 @@ function renderTopbar() {
       <div class="brand-glyph">${ICON.chip}</div>
       <div>
         <div class="brand-name">HID Remapper VX</div>
-        <div class="brand-tag">Web Config</div>
+        <div class="brand-tag">Web Config (Ja)</div>
       </div>
     </div>
     <div class="conn-actions" id="connActions"></div>
@@ -39,23 +39,23 @@ function renderTopbar() {
 function connButtons() {
   if (APP.connection === "connected") {
     return `
-      <button class="btn-hx btn-ghost" data-act="load">${ICON.download}<span>Load from device</span></button>
-      <button class="btn-hx btn-primary" data-act="save">${ICON.save}<span>Save to device</span></button>
-      <button class="btn-hx" data-act="disconnect">${ICON.plug}<span>Disconnect</span></button>`;
+      <button class="btn-hx btn-ghost" data-act="load">${ICON.download}<span>デバイスから読み込む</span></button>
+      <button class="btn-hx btn-primary" data-act="save">${ICON.save}<span>デバイスへ保存</span></button>
+      <button class="btn-hx" data-act="disconnect">${ICON.plug}<span>切断</span></button>`;
   }
   if (APP.connection === "connecting") {
-    return `<button class="btn-hx btn-primary" disabled>${ICON.plug}<span>Connecting…</span></button>`;
+    return `<button class="btn-hx btn-primary" disabled>${ICON.plug}<span>接続中…</span></button>`;
   }
-  return `<button class="btn-hx btn-primary" data-act="connect">${ICON.plug}<span>Open device</span></button>`;
+  return `<button class="btn-hx btn-primary" data-act="connect">${ICON.plug}<span>デバイスを開く</span></button>`;
 }
 
 function renderDeviceBar() {
   const c = APP.connection;
   const pill = c === "connected"
-    ? `<span class="conn-pill on"><span class="conn-dot"></span>Connected</span>`
+    ? `<span class="conn-pill on"><span class="conn-dot"></span>接続済み</span>`
     : c === "connecting"
-    ? `<span class="conn-pill connecting"><span class="conn-dot"></span>Connecting…</span>`
-    : `<span class="conn-pill off"><span class="conn-dot"></span>No device</span>`;
+    ? `<span class="conn-pill connecting"><span class="conn-dot"></span>接続中…</span>`
+    : `<span class="conn-pill off"><span class="conn-dot"></span>デバイスなし</span>`;
 
   if (c !== "connected") {
     return `
@@ -63,8 +63,8 @@ function renderDeviceBar() {
       <div class="seg" style="flex-direction:row;align-items:center;gap:12px">
         <div class="device-glyph">${ICON.tv}</div>
         <div>
-          <div class="seg-value">No device connected</div>
-          <div class="seg-label" style="text-transform:none;letter-spacing:0;font-family:var(--font-ui);font-size:12px">Plug in your remapper and click “Open device” — Chrome will show a picker.</div>
+          <div class="seg-value">デバイスが接続されていません</div>
+          <div class="seg-label" style="text-transform:none;letter-spacing:0;font-family:var(--font-ui);font-size:12px">Remapperを接続して「デバイスを開く」をクリックしてください。 — Chrome will show a picker.</div>
         </div>
       </div>
       <div class="topbar-spacer"></div>
@@ -76,11 +76,11 @@ function renderDeviceBar() {
   <div class="device-bar">
     <div class="seg" style="flex-direction:row;align-items:center;gap:11px">
       <div class="device-glyph">${ICON.tv}</div>
-      <div><div class="seg-label">Device name</div><input id="deviceName" class="device-name-input" value="${d.name}" maxlength="64" spellcheck="false" autocomplete="off" placeholder="Name this device"></div>
+      <div><div class="seg-label">デバイス名</div><input id="deviceName" class="device-name-input" value="${d.name}" maxlength="64" spellcheck="false" autocomplete="off" placeholder="Name this device"></div>
     </div>
     <div class="seg"><div class="seg-label">VID:PID</div><div class="seg-value mono">${d.vidpid}</div></div>
-    <div class="seg"><div class="seg-label">Firmware</div><div class="seg-value mono">${d.firmware}</div></div>
-    <div class="seg"><div class="seg-label">Output Profile</div><div class="seg-value">${d.profile}</div></div>
+    <div class="seg"><div class="seg-label">ファームウェア</div><div class="seg-value mono">${d.firmware}</div></div>
+    <div class="seg"><div class="seg-label">出力プロファイル</div><div class="seg-value">${d.profile}</div></div>
     <div class="topbar-spacer"></div>
     <div class="seg" style="border-right:none">${pill}</div>
   </div>`;
@@ -100,8 +100,8 @@ function renderConfigHeader() {
   return `
   <div class="config-header">
     <div class="ch-main">
-      <div class="ch-kicker">Configuration</div>
-      <input id="configTitle" class="config-title-input" value="${APP.config.title}" spellcheck="false" autocomplete="off" placeholder="Name this configuration">
+      <div class="ch-kicker">構成</div>
+      <input id="configTitle" class="config-title-input" value="${APP.config.title}" spellcheck="false" autocomplete="off" placeholder="この構成の名前">
     </div>
   </div>`;
 }
@@ -190,7 +190,7 @@ function applyDeviceConfig(config) {
 async function handleConn(act) {
   const dev = window.HRX_DEVICE;
   if (act === "connect") {
-    if (!navigator.hid) { toast("WebHID needs desktop Chrome or Edge"); return; }
+    if (!navigator.hid) { toast("WebHIDにはデスクトップ版ChromeまたはEdgeが必要です"); return; }
     APP.connection = "connecting"; render();
     try {
       const info = await dev.connect();
@@ -207,7 +207,7 @@ async function handleConn(act) {
       const hasLocalWork = configSource !== "device" && APP.mappings.length > 0;
       if (hasLocalWork) {
         render();
-        toast("Connected to " + info.name + " — your unsaved config is still here. Click “Load from device” to replace it with the device's.");
+        toast(info.name + "に接続しました。保存されていない設定が残っています。「デバイスから読み込む」をクリックしてデバイスの設定内容に置き換えてください。");
         return;
       }
 
@@ -217,7 +217,7 @@ async function handleConn(act) {
         applyDeviceConfig(config);
         configSource = "device";
         render();
-        toast("Connected to " + info.name + " — loaded " + ((config.mappings && config.mappings.length) || 0) + " mappings");
+        toast(info.name + "に接続して " + ((config.mappings && config.mappings.length) || 0) + "個のマッピングを読み込みました");
       } catch (e) {
         render();
         toast("Connected to " + info.name + ", but the load failed: " + String((e && e.message) || e) + " — saving is blocked until a load succeeds");
@@ -228,7 +228,7 @@ async function handleConn(act) {
     }
   } else if (act === "disconnect") {
     try { await dev.disconnect(); } catch (e) {}
-    APP.connection = "disconnected"; render(); toast("Device disconnected");
+    APP.connection = "disconnected"; render(); toast("デバイスを切断しました");
   } else if (act === "load") {
     if (!dev.isConnected()) { toast("Connect a device first"); return; }
     try {
@@ -236,7 +236,7 @@ async function handleConn(act) {
       applyDeviceConfig(config);
       configSource = "device";
       render();
-      toast("Loaded " + ((config.mappings && config.mappings.length) || 0) + " mappings from device");
+      toast("デバイスから " + ((config.mappings && config.mappings.length) || 0) + "個のマッピングを読み込みました");
     } catch (e) { toast("Load failed: " + String((e && e.message) || e)); }
   } else if (act === "save") {
     if (!dev.isConnected()) { toast("Connect a device first"); return; }
@@ -249,11 +249,12 @@ async function handleConn(act) {
     }
     if (configSource !== "device") {
       const ok = window.confirm(
-        "This config did not come from the device.\n\n" +
-        "Saving REPLACES the device's mappings, macros, expressions and quirks with what is on " +
-        "this page. Anything this page does not carry will be erased.\n\n" +
-        "Tip: click “Load from device” first if you only meant to change a few mappings.\n\nSave anyway?");
-      if (!ok) { toast("Save cancelled"); return; }
+        "この構成はデバイスから読み込んだものではありません。\n\n" +
+        "保存すると、デバイス上のマッピング・マクロ・expressionsとquirksが、" +
+        "このページの内容で上書きされます。 このページに記載されていないものはすべて消去されます。\n\n" +
+        "Tip: マッピングを少しだけ変更したい場合は、まず「デバイスから読み込む」をクリックしてください。\n\n" +
+        "本当に保存しますか？");
+      if (!ok) { toast("保存をキャンセルしました"); return; }
     }
     // A usage the device reports at a CONSTANT non-zero value is a vendor field, not a control.
     // Mapping one does nothing: it never goes up or down, so the mapping can never trigger.
@@ -279,7 +280,7 @@ async function handleConn(act) {
         const IRPIN = (window.HRX_TRANSLATE && window.HRX_TRANSLATE.IR_PIN_USAGE) || "0xfffb00ff";
         const n = (config.mappings || [])
           .filter((m) => String(m.target_usage).toLowerCase() !== IRPIN).length;
-        let msg = "Saved " + n + " mappings to device";
+        let msg = n + "個のマッピングをデバイスに保存しました";
         if (config.incomplete) {
           msg += " — " + config.incomplete + " unfinished row(s) NOT sent (pick their output, " +
             "with an output picked)";
@@ -299,7 +300,7 @@ if (window.HRX_DEVICE && window.HRX_DEVICE.onDisconnect) {
     APP.connection = "disconnected";
     configSource = "json";  // what's on screen came from the device, but the device is gone now
     render();
-    toast("Device unplugged — your config is still here. Reconnect to save it.");
+    toast("デバイスが切断されました。 — 構成は残されています。保存するには再度接続してください。");
   });
 }
 
