@@ -66,7 +66,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "keyboard",
-    label: "Keyboard",
+    label: "キーボード",
     accent: "#4db6ac",
     usages: [
       ["0x000700e0", "Left Control"],
@@ -209,7 +209,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "mouse",
-    label: "Mouse",
+    label: "マウス",
     accent: "#4dd0e1",
     usages: [
       ["0x00090001", "Left button"],
@@ -230,7 +230,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "gamepad",
-    label: "Gamepad",
+    label: "ゲームパッド",
     accent: "#ffb74d",
     usages: [
       ["0x00010030", "Left stick X"],
@@ -334,7 +334,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "media",
-    label: "Media",
+    label: "メディア",
     accent: "#f06292",
     usages: [
       ["0x000c0069", "Red"],
@@ -390,7 +390,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "layers",
-    label: "Layers",
+    label: "レイヤー",
     accent: "#9575cd",
     usages: [
       ["0xfff10000", "Layer 0"],
@@ -405,7 +405,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "macros",
-    label: "Macros",
+    label: "マクロ",
     accent: "#4fc3f7",
     usages: [
       ["0xfff20001", "Macro 1"],
@@ -583,7 +583,7 @@ const USAGE_CATEGORIES = [
   },
   {
     id: "other",
-    label: "Other",
+    label: "その他",
     accent: "#a1a8c3",
     usages: [
       ["0x00000000", "Nothing"],
